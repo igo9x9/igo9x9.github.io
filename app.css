@@ -1,0 +1,26 @@
+.app-wrapper > img {
+	display: block;
+	width: 100%;
+}
+.app-wrapper {
+	max-width: 290px;
+	margin: 20px auto 40px auto;
+	padding: 0;
+	background-color: #f5f5f5;
+	border: 0.5px solid #ddd;
+}
+.app-wrapper .buttons-wrapper {
+	margin-bottom: 5px;
+	padding: 5px 0px 10px 0px;
+	text-align: center;
+}
+.app-wrapper .bunki-wrapper {
+	margin-bottom: 5px;
+	padding: 5px 0px 10px 0px;
+	text-align: center;
+}
+.app-wrapper .message-wrapper {
+	margin: 10px;
+	text-align: center;
+	min-height: 1.5rem;
+}
