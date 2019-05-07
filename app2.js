@@ -434,6 +434,7 @@ function View() {
     self.ready = ko.observable(false);
     self.started = ko.observable(false);
     self.kifuAllNum = 0;
+    self.startPageIndex = -1;
 
     self.cells = [];
 
@@ -490,7 +491,7 @@ function View() {
             self.canFoward(true);
         }
 
-        if (ban.pages.length <= 2) {
+        if (ban.pages.length <= self.startPageIndex) {
             self.canBackward(false);
         } else {
             self.canBackward(true);
@@ -529,6 +530,9 @@ function View() {
             self.choise(nextHands[0]);
             return true;
         } else if (nextHands.length > 1) {
+            if (self.startPageIndex === -1) {
+                self.startPageIndex = ban.pages.length;
+            }
             return false;
         } else {
             const result = ban.kifuAll.getActiveKifuList()[0].result();
@@ -682,7 +686,7 @@ const html = '\
             <div class="bunki-wrapper">\
                 <!-- ko foreach: nextHands().sort(function(a,b) { return a.nextHand.nextHandIndex - b.nextHand.nextHandIndex }) -->\
                     <button class="btn btn-info text-left" data-bind="click:$parent.choise">\
-                        <b data-bind="text:$parent.nextColor() + String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
+                        <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
                     </button>\
                 <!-- /ko -->\
             </div>\
