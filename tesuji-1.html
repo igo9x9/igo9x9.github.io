@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+    <title>決まると嬉しい石塔絞り</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+	<div class="container" style="margin-bottom:50px">
+
+		<div class="text-center" id="loading" style="margin: 50px">
+			<img src="img/gif-load.gif">
+			<p><small>棋譜を読み込み中...</small></p>
+		</div>
+
+		<app></app>
+
+		<h4>石塔絞り</h4>
+
+		<p>
+			憧れます。
+		</p>
+
+		<hr>
+		<div class="text-center"><a href="index.html">トップページへ戻る</a></div>
+	</div>
+
+
+<div id="sgf" style="display:none">
+
+(;RE[黒攻め合い勝ち]
+;B[gg];W[fg];B[ff];W[fh];B[eg];W[ef];B[fe];W[df];B[gd];W[cg]
+;B[eh];W[gh];B[hh];W[hg];B[gf];W[hi];B[ih];W[ig];B[fi];W[ii];B[hh];W[ih];B[ei]
+)
+
+@@@
+
+(;RE[失敗]
+;B[gg];W[fg];B[ff];W[fh];B[eg];W[ef];B[fe];W[df];B[gd];W[cg]
+;B[gh];W[eh]
+)
+
+</div>
+
+	<script src="app2.js"></script>
+
+</body>
+</html>
