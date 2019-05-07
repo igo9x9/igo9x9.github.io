@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<link rel="stylesheet" href="app.css">
+</head>
+
+<body>
+
+	<div class="container" style="margin-bottom:50px">
+
+		<div class="text-center" id="loading" style="margin: 50px">
+			<img src="img/gif-load.gif">
+			<p><small>棋譜を読み込み中...</small></p>
+		</div>
+
+		<app></app>
+
+		<h4></h4>
+
+		<p>
+		</p>
+
+		<hr>
+		<div class="text-center"><a href="index.html">トップページへ戻る</a></div>
+	</div>
+
+
+<div id="sgf" style="display:none">
+
+(;RE[白死（五目ナカデ）]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[fi];B[ig];W[ih];B[hi]
+)
+
+@@@
+
+(;RE[白死（五目ナカデ）]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[ig];B[fi];W[gi];B[hh]
+)
+
+@@@
+
+(;RE[白死（三目ナカデ）]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[hh];B[gi];W[fi];B[ig];W[ih];B[hi]
+)
+
+@@@
+
+(;RE[白死（隅の曲り四目）]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[hh];B[gi];W[fi];B[hi];W[ig];B[ii]
+)
+
+@@@
+
+(;RE[白死]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[hh];B[ig];W[gi];B[ih]
+)
+
+@@@
+
+(;RE[白死]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[hi];B[ih];W[ig];B[fi];W[gi];B[hh]
+)
+
+@@@
+
+(;RE[白生き（失敗）]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[hi];B[fi];W[ih]
+)
+
+@@@
+
+(;RE[白死]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[ih];B[hi]
+)
+
+@@@
+
+(;RE[白死]
+;B[hf];W[hg];B[gf];W[gg];B[ff];W[fg];B[ef];W[fg];B[eg];W[fg];B[eh];W[fh];B[ch];W[fh];B[hd]
+;W[gi];B[hh];W[ih];B[hi]
+)
+
+</div>
+
+	<script src="app2.js"></script>
+
+</body>
+</html>
