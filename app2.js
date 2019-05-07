@@ -418,18 +418,12 @@ Ban.prototype.readSGF = function () {
     }
 
     this.kifuAll = new KifuAll(kifuList);
-    console.log(kifuList);
 }
 
 
 
 function View() {
     const self = this;
-
-    const firstX = 4;
-    const firstY = 4;
-
-    const firstMessage = "「進む」で１手ずつ進みます。";
 
     self.ready = ko.observable(false);
     self.started = ko.observable(false);
@@ -453,13 +447,10 @@ function View() {
         ban.readSGF();
         self.kifuAllNum = ban.kifuAll.kifuList.length;
         refleshCells();
-        self.ready(true);
         self.start();
-        document.getElementsByClassName("app-wrapper")[0].style.display = "block";
-        $("#loading").remove();
     }, 0);
 
-    self.message = ko.observable(firstMessage);
+    self.message = ko.observable("");
 
     self.nextHands = ko.observableArray();
 
@@ -532,6 +523,10 @@ function View() {
         } else if (nextHands.length > 1) {
             if (self.startPageIndex === -1) {
                 self.startPageIndex = ban.pages.length;
+                self.ready(true);
+                self.canBackward(false);
+                document.getElementsByClassName("app-wrapper")[0].style.display = "block";
+                $("#loading").remove();
             }
             return false;
         } else {
@@ -607,18 +602,18 @@ const html = '\
                         <tr>\
                             <!-- ko foreach: $data -->\
                                 <!-- ko if:stone === "B" -->\
-                                    <!-- ko if:!isLastHand -->\
+                                    <!-- ko if:!isLastHand || !$parents[1].canBackward() -->\
                                         <td><img src="./img/b.png"></td>\
                                     <!-- /ko -->\
-                                    <!-- ko if:isLastHand -->\
+                                    <!-- ko if:isLastHand && $parents[1].canBackward() -->\
                                         <td><img src="./img/b-last.png"></td>\
                                     <!-- /ko -->\
                                 <!-- /ko -->\
                                 <!-- ko if:stone === "W" -->\
-                                    <!-- ko if:!isLastHand -->\
+                                    <!-- ko if:!isLastHand || !$parents[1].canBackward() -->\
                                         <td><img src="./img/w.png"></td>\
                                     <!-- /ko -->\
-                                    <!-- ko if:isLastHand -->\
+                                    <!-- ko if:isLastHand && $parents[1].canBackward() -->\
                                         <td><img src="./img/w-last.png"></td>\
                                     <!-- /ko -->\
                                 <!-- /ko -->\
@@ -699,39 +694,10 @@ const html = '\
                 <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px">>></button>\
             </div>\
 \
-            <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
-                <span class="text-secondary">全棋譜数：<span data-bind="text:kifuAllNum"></span>件</span>\
-                <a href="#" class="float-right" data-toggle="modal" data-target="#help">ヘルプ</a>\
-            </div>\
-\
         </div>\
         <!-- /ko -->\
 \
 \
-<div class="modal" id="help" tabindex="-1">\
-    <div class="modal-dialog">\
-        <div class="modal-content">\
-            <div class="modal-header">\
-                <h5 class="modal-title" id="exampleModalLabel">ヘルプ</h5>\
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
-                    <span aria-hidden="true">&times;</span>\
-                </button>\
-            </div>\
-            <div class="modal-body">\
-                <p>登録している棋譜のほとんどは、コンピュータ同士を中国ルール（コミ7目）で対戦させたものです。</p>\
-                <p>棋譜が分岐した時に表示される優劣を表すコメントの意味は下記の通り、形勢判断によるものではなく、単に登録している棋譜がたまたまそういう結果になった、という点にご注意ください。</p>\
-                <dl>\
-                    <dt>黒勝ち or 白勝ち</dt>\
-                    <dd>その手から続く棋譜の結果が、全て黒の勝ち、または白の勝ちであることを表します。</dd>\
-                    <dt>黒優勢 or 白優勢</dt>\
-                    <dd>その手から続く棋譜の結果が黒勝利と白勝利のどちらもある場合、どちらの色の勝率が高いかを表します。</dd>\
-                    <dt>互角</dt>\
-                    <dd>勝率の差が小さいか、持碁であることを表します。</dd>\
-                </dl>\
-            </div>\
-        </div>\
-    </div>\
-</div>\
 ';
 
 ko.components.register("app", {
