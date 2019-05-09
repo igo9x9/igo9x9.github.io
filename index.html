@@ -34,7 +34,7 @@
 	<div class="jumbotron jumbotron-fluid" style="color:#fff;background: linear-gradient(25deg, #60a3bc 50%, #82ccdd); ">
 		<div class="container">
 			<h1 class="display-4">囲碁９路盤の棋譜</h1>
-			<p class="lead">９路盤をゆるく楽しみたい</p>
+			<p class="lead">９路盤をゆるく楽しむ</p>
 		</div>
 	</div>
 
@@ -43,13 +43,13 @@
 		<div>
 				<img src="img2/smartphone_neru_man.png" align="right">
 				９路盤の棋譜をダラダラとゴロ寝しながら眺めたかったので作りました。
-				棋譜は、対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で名付けられている戦法名ごとに分けて整理しようとしています。
-	                        流行りのAIとは全く無縁の、コンピュータ同士を手動で対局させた棋譜を手作業でまとめるというアナログな方法でやっています。
+				棋譜は、対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で名付けられている戦法名ごとに分けて整理します。
+	                        コンピュータ同士を手動で対局させて棋譜も手作業で編集するという、流行りのAIとは全く無縁のアナログな方法でやっています。
 		</div>
 
 		<br clear="all">
 
-		<div class="card text-center border-success mb-3" style="width:300px;margin:25px auto 0 auto;">
+		<div id="uranai" class="card text-center border-success mb-3" style="display:none;width:300px;margin:25px auto 0 auto;">
 			<div class="card-header text-white bg-success">
 				今日の運勢
 			</div>
@@ -97,6 +97,10 @@
 				</table>
 				<p class="card-text" data-bind="text:message"></p>
 			</div>
+		</div>
+
+		<div class="alert alert-success" style="margin-top:25px">
+			<strong>最近の更新：</strong> <a href="#new1" class="alert-link">「風車」編①</a> と <a href="#new2" class="alert-link">手筋①</a> を追加しました。 <span class="text-muted">2019/05/08</span>
 		</div>
 
 		<div style="margin-top:25px">
@@ -483,9 +487,9 @@
 				</div>
 			</div>
 
-			<div class="card bg-light border-dark mb-3 shadow">
+			<div class="card bg-light border-dark mb-3 shadow"|>
 				<div class="card-header text-white bg-dark">
-					「風車」編① <span class="badge badge-warning">NEW</span>
+					「風車」編① <span class="badge badge-warning" id="new1">NEW</span>
 				</div>
 				<div class="row no-gutters">
 					<div class="col-md-4">
@@ -601,7 +605,6 @@
 					<p class="card-text">
 						黒①から黒③までの手順は「王道進行」と呼ばれますが、さらに白⑧まで進んだ形は「風車」という名前が付けられています。
 						これに黒が⑨とカケた棋譜を集めました。
-						すでにややこしくてよく分かりません。
 					</p>
 
 					<a href="fuusya-1.html" class="btn btn-lg btn-primary">棋譜を見る</a>
@@ -746,7 +749,7 @@
 
 		<div class="card border-secondary mb-3 shadow">
 			<div class="card-header">
-				手筋① <span class="badge badge-warning">NEW</span>
+				手筋① <span class="badge badge-warning" id="new2">NEW</span>
 			</div>
 			<div class="row no-gutters">
 				<div class="col-md-4">
@@ -860,7 +863,7 @@
 						<p class="card-text">
 						</p>
 						<p class="card-text">
-							決まるとそれだけで嬉しくなる石塔絞り。
+							決まるとそれだけで嬉しくなります。
 							「風車」編①の棋譜の中からの抜粋です。
 						</p>
 
