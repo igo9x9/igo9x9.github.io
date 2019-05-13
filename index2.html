@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139602846-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-139602846-1');
+	</script>
+	<meta charset="UTF-8" />
+    <title>９路盤の棋譜 | 囲碁クエストをより楽しむために</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<meta name="description" content="９路盤の棋譜を囲碁クエストの戦法名ごとに整理しているサイトです。" />
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="app.css">
+	<style>
+		td>img {
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="jumbotron jumbotron-fluid" style="color:#fff;background: linear-gradient(25deg, #60a3bc 50%, #82ccdd); ">
+		<div class="container">
+			<h1 class="display-4">囲碁９路盤の棋譜</h1>
+			<p class="lead">９路盤をゆるく楽しむ</p>
+		</div>
+	</div>
+
+	<div class="container" style="margin-bottom:30px;">
+
+		<div>
+				<img src="img2/smartphone_neru_man.png" align="right">
+				９路盤の棋譜をダラダラとゴロ寝しながら眺めたかったので作りました。
+				棋譜は、対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で名付けられている戦法名ごとに分けて整理します。
+                コンピュータ同士を手動で対局させて棋譜も手作業で編集するという、流行りのAIとは全く無縁のアナログな方法でやっています。
+		</div>
+
+		<br clear="all">
+
+		<div class="alert alert-success" style="margin-top:25px">
+			<h5 class="alert-heading">更新状況</h5>
+			<span class="text-muted">2019/05/08</span> 「風車」編① と 手筋① を追加しました。
+		</div>
+
+		<div style="margin-top:25px;" class="acarousel">
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						「正三角形もどき２」編①
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b1.png"></td>
+								<td><img src="img2/b7.png"></td>
+								<td><img src="img2/w4.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w6.png"></td>
+								<td><img src="img2/b5.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b3.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w2.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">「正三角形もどき２」に白がケイマで受けて黒ツケコシた場合</h5>
+						<p class="card-text">
+							黒①から黒③までの手順は、囲碁クエストでは「正三角形もどき２」と呼ばれます。これに対して白が④とケイマで隅を取ろうとしたところへ、黒が⑤とツケコシからの戦いを選んだ棋譜を集めました。
+							白が②⑥の２石を捨てるのかどうか。
+						</p>
+						<a href="modoki2-1.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						「正三角形もどき２」編②
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b5.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b1.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w4.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b3.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w2.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">「正三角形もどき２」に白ケイマで受けて黒が囲った場合</h5>
+						<p class="card-text">
+							「正三角形もどき２」からの白ケイマジマリに対して、黒が広く⑤と囲った場合の棋譜を集めました。
+							このまま囲い合って地合い勝負になると白が不利に思えますが、どうか。
+						</p>
+						<a href="modoki2-2.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						「振り子」編①
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b1.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b5.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b3.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w4.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w2.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">「振り子」に白が一間トビで受けて黒コスミツケた場合</h5>
+						<p class="card-text">
+							黒①から黒③までの手順は、囲碁クエストでは「振り子」と呼ばれます。
+							これに対して白が④と封鎖を避けようとしたところに黒がコスミツケた棋譜を集めました。
+							上辺はどこまで黒地にできるのか。
+						</p>
+						<a href="furiko-1.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						「風車」編① <span class="badge badge-warning">NEW</span>
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b1.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w4.png"></td>
+								<td><img src="img2/b5.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b9.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w6.png"></td>
+								<td><img src="img2/b3.png"></td>
+								<td><img src="img2/w2.png"></td>
+								<td><img src="img2/w8.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b7.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">「風車」に黒がカケた場合</h5>
+						<p class="card-text">
+							黒①から黒③までの手順は「王道進行」と呼ばれますが、さらに白⑧まで進んだ形は「風車」という名前が付けられています。
+							これに黒が⑨とカケた棋譜を集めました。
+						</p>
+						<a href="fuusya-1.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+
+		<br style="margin-top:50px">
+
+		<h3>おまけ</h3>
+
+		<div style="margin-top:25px;" class="acarousel">
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						死活①
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">死の基本型（白先でも白死）</h5>
+						<p class="card-text">
+							死活に関する入門書などでよく最初に取り上げられる、先手でも生きの無い形。
+							基本中の基本、のはずですが、私は自信がなかったので復習のためにまとめました。
+						</p>
+						<a href="sikatu-1.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+			<div style="margin:0 10px 0 10px;cursor:grab;">
+				<div class="card bg-light border-dark mb-3 shadow">
+					<div class="card-header text-white bg-dark">
+						手筋① <span class="badge badge-warning">NEW</span>
+					</div>
+					<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+						<tbody>
+							<tr>
+								<td><img src="img2/top-left.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-middle.png"></td>
+								<td><img src="img2/top-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/middle-left.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/middle-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/b.png"></td>
+								<td><img src="img2/middle-right.png"></td>
+							</tr>
+							<tr>
+								<td><img src="img2/bottom-left.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/bottom-middle.png"></td>
+								<td><img src="img2/w.png"></td>
+								<td><img src="img2/bottom-right.png"></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="card-body">
+						<h5 class="card-title">石塔絞り</h5>
+						<p class="card-text">
+							決まるとそれだけで嬉しくなります。
+							「風車」編①の棋譜の中からの抜粋です。
+						</p>
+						<a href="tesuji-1.html" class="btn btn-primary">棋譜を見る</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+
+		<br style="margin-top:50px">
+
+		<h3>参考にさせて頂いたサイト</h3>
+		<ul>
+			<li><a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a></li>
+			<li><a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a></li>
+			<li><a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a></li>
+		</ul>
+
+		<hr>
+
+		<div class="text-center">
+			<a href="mailto:ando19721226@gmail.com">メール</a>
+		</div>
+
+	</div>
+
+	<script>
+		$(document).ready(function(){
+			$('.acarousel').slick({
+				dots: true,
+				infinite: true,
+				speed: 200,
+				slidesToShow: 3,
+				adaptiveHeight: true,
+				responsive: [
+				{
+					breakpoint: 1024,
+					settings: {
+						slidesToShow: 2,
+						infinite: true,
+						dots: true
+					}
+				},
+				{
+					breakpoint: 600,
+					settings: {
+						arrows: false,
+						slidesToShow: 1,
+					}
+				},
+				{
+					breakpoint: 480,
+					settings: {
+						arrows: false,
+						slidesToShow: 1,
+					}
+				}]
+			});
+		});
+	</script>
+
+</body>
+</html>
