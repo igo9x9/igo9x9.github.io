@@ -29,6 +29,9 @@
 			display: block;
 			width: 100%;
 		}
+		.slick-prev:before, .slick-next:before {
+		    color: black;
+		}
 	</style>
 </head>
 
@@ -57,7 +60,9 @@
 			<span class="text-muted">2019/05/08</span> 「風車」編① と 手筋① を追加しました。
 		</div>
 
-		<div style="margin-top:25px;" class="acarousel">
+		<br style="margin-top:25px">
+		<div class="d-block d-md-none" style="width:100%;text-align:center">左右にスワイプして切り替えます</div>
+		<div class="acarousel">
 
 			<div style="margin:0 10px 0 10px;cursor:grab;">
 				<div class="card bg-light border-dark mb-3 shadow">
@@ -544,7 +549,9 @@
 
 		<h3>おまけ</h3>
 
-		<div style="margin-top:25px;" class="acarousel">
+		<br style="margin-top:25px">
+		<div class="d-block d-md-none" style="width:100%;text-align:center">左右にスワイプして切り替えます</div>
+		<div class="acarousel">
 
 			<div style="margin:0 10px 0 10px;cursor:grab;">
 				<div class="card bg-light border-dark mb-3 shadow">
@@ -807,6 +814,7 @@
 	<script>
 		$(document).ready(function(){
 			$('.acarousel').slick({
+				arrows: true,
 				dots: true,
 				infinite: true,
 				speed: 200,
@@ -814,7 +822,7 @@
 				adaptiveHeight: true,
 				responsive: [
 				{
-					breakpoint: 1024,
+					breakpoint: 1200,
 					settings: {
 						slidesToShow: 2,
 						infinite: true,
@@ -822,17 +830,10 @@
 					}
 				},
 				{
-					breakpoint: 600,
+					breakpoint: 768,
 					settings: {
-						arrows: false,
 						slidesToShow: 1,
-					}
-				},
-				{
-					breakpoint: 480,
-					settings: {
 						arrows: false,
-						slidesToShow: 1,
 					}
 				}]
 			});
