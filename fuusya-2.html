@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139602846-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-139602846-1');
+	</script>
+	<meta charset="UTF-8" />
+    <title>「風車」に黒がマゲた場合</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<meta name="description" content="囲碁クエストの戦法名「風車」の棋譜を集めました。" />
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<link rel="stylesheet" href="app.css">
+	<style>
+		td>img {
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container" style="margin-bottom:50px">
+
+		<div class="row">
+			<div class="col-md-4">
+
+				<div class="text-center" id="loading" style="margin: 50px">
+					<img src="img/gif-load.gif">
+					<p><small>棋譜を読み込み中...</small></p>
+				</div>
+
+				<app></app>
+
+			</div>
+
+			<div class="col-md-8" style="margin-top:20px">
+
+				<h4>「風車」に黒がマゲた場合</h4>
+
+				<p>
+					黒①から黒③までの手順は「王道進行」と呼ばれますが、さらに白⑧まで進んだ形は「風車」という名前が付けられています。
+					これに黒が⑨とマゲた棋譜を集めました。
+				</p>
+
+				<table cellpadding="0" cellspacing="0" border="0" style="margin:10px auto 20px auto;background-color:#dcb35d;">
+					<tbody>
+						<tr>
+							<td><img src="img2/top-left.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/b1.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/w4.png"></td>
+							<td><img src="img2/b5.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/w6.png"></td>
+							<td><img src="img2/b3.png"></td>
+							<td><img src="img2/w2.png"></td>
+							<td><img src="img2/w8.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/b9.png"></td>
+							<td><img src="img2/b7.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/bottom-left.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-right.png"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<hr>
+
+		<div class="text-center"><a href="index.html">トップページへ戻る</a></div>
+	</div>
+
+
+<div id="sgf" style="display:none">
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[B+20.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[de];B[dd];W[cd]
+;B[gf];W[gg];B[ce];W[cf]
+;B[be];W[ed];B[dc];W[bg]
+;B[bh];W[ec];B[ge];W[db]
+;B[cc];W[cb];B[bc];W[gc]
+;B[hg];W[hh];B[hf];W[ih]
+;B[eh];W[fh];B[fi];W[gi]
+;B[ei];W[hd];B[ff];W[gh]
+;B[gd];W[hc];B[fd];W[fc]
+;B[ig];W[he];B[hi];W[bb]
+;B[ab];W[ba];B[ac];W[ie]
+;B[aa];W[if];B[ii];W[tt]
+;B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[W+8.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[cf];B[bg];W[bf]
+;B[ag];W[dd];B[ed];W[dc]
+;B[gf];W[gg];B[hf];W[eh]
+;B[hg];W[di];B[bh];W[ci]
+;B[bi];W[ei];B[de];W[bd]
+;B[cd];W[cc];B[ce];W[be]
+;B[bc];W[bb];B[fi];W[af]
+;B[ad];W[ac];B[ec];W[eb]
+;B[fb];W[db];B[ff];W[gh]
+;B[hh];W[ah];B[gi];W[ai]
+;B[ea];W[da];B[fa];W[fh]
+;B[hi];W[tt];B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[W+14.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[cf];B[bg];W[bf]
+;B[ag];W[dd];B[ed];W[dc]
+;B[gf];W[gg];B[hf];W[eh]
+;B[bi];W[hg];B[ec];W[eb]
+;B[fb];W[db];B[gc];W[bd]
+;B[hh];W[ih];B[gh];W[hi]
+;B[gi];W[fh];B[ii];W[ig]
+;B[hi];W[hd];B[di];W[gd]
+;B[ff];W[if];B[hc];W[hb]
+;B[ib];W[ha];B[he];W[ie]
+;B[id];W[ic];B[ei];W[fi]
+;B[id];W[hi];B[af];W[ic]
+;B[bc];W[bb];B[ad];W[cc]
+;B[ac];W[ab];B[ae];W[fa]
+;B[id];W[be];B[de];W[cd]
+;B[ic];W[gb];B[fd];W[fc]
+;B[ge];W[fb];B[ia];W[ce]
+;B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[B+2.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[cf];B[bg];W[bf]
+;B[bh];W[dd];B[ed];W[dc]
+;B[gf];W[gg];B[hf];W[eh]
+;B[af];W[bd];B[hg];W[hh]
+;B[ih];W[di];B[gh];W[gc]
+;B[ec];W[eb];B[fb];W[db]
+;B[fc];W[ag];B[ah];W[gb]
+;B[ga];W[ha];B[fa];W[hd]
+;B[he];W[ge];B[ff];W[ib]
+;B[ad];W[ac];B[ae];W[be]
+;B[ag];W[bb];B[fh];W[ie]
+;B[if];W[id];B[ea];W[da]
+;B[de];W[ce];B[fe];W[gd]
+;B[hi];W[fd];B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[B+30.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[cf];B[bg];W[bf]
+;B[bh];W[dd];B[ed];W[dc]
+;B[gf];W[gg];B[hf];W[hg]
+;B[eh];W[ff];B[gd];W[fe]
+;B[fd];W[hc];B[hd];W[fb]
+;B[gc];W[hb];B[gb];W[ga]
+;B[eb];W[ec];B[fc];W[ea]
+;B[fa];W[ge];B[he];W[fb]
+;B[db];W[cb];B[fa];W[fh]
+;B[hh];W[fb];B[ig];W[ih]
+;B[ii];W[ic];B[fa];W[if]
+;B[ie];W[fb];B[af];W[ae]
+;B[fa];W[bd];B[da];W[ca]
+;B[de];W[ce];B[ag];W[tt]
+;B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-14 18:49:25]RE[B+18.0]
+;B[ee];W[eg];B[dg];W[df]
+;B[ef];W[cg];B[dh];W[fg]
+;B[ch];W[cf];B[bg];W[bf]
+;B[bh];W[dd];B[ed];W[dc]
+;B[gf];W[gg];B[hf];W[hg]
+;B[eh];W[ff];B[gd];W[hc]
+;B[hd];W[gc];B[ec];W[fe]
+;B[fd];W[eb];B[fb];W[db]
+;B[hb];W[gb];B[ga];W[ib]
+;B[ha];W[id];B[ie];W[ge]
+;B[he];W[ea];B[fa];W[de]
+;B[hi];W[ig];B[fc];W[gi]
+;B[fi];W[hh];B[gh];W[fh]
+;B[gi];W[ei];B[di];W[ii]
+;B[ei];W[ag];B[ah];W[af]
+;B[tt];W[tt]
+)
+
+
+</div>
+
+	<script src="app.js"></script>
+
+</body>
+</html>
