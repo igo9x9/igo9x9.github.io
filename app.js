@@ -691,8 +691,8 @@ const html = '\
             <!-- ko if:nextHands().length > 1 -->\
             <div class="bunki-wrapper">\
                 <!-- ko foreach: nextHands().sort(function(a,b) { return a.nextHand.nextHandIndex - b.nextHand.nextHandIndex }) -->\
-                    <button class="btn btn-info text-left" data-bind="click:$parent.choise" style="margin-bottom:5px;padding-left:20px;width:250px;">\
-                        <b data-bind="text:$parent.nextColor() + String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
+                    <button class="btn text-left" data-bind="click:$parent.choise, css:{\'btn-dark\':$parent.nextColor()==\'黒\',\'btn-outline-dark white\':$parent.nextColor()==\'白\'}" style="margin-bottom:5px;padding-left:20px;width:250px;">\
+                        <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
                         <span data-bind="text:\'（\' + nextHand.predication() + \'）\'"></span>\
                         <span class="float-right" data-bind="text: \'棋譜数：\' + nextHand.winColors.length"></span>\
                     </button>\
