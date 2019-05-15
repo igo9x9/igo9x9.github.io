@@ -415,7 +415,30 @@ Ban.prototype.readSGF = function () {
         kifuList.push(new Kifu(hands, winner));
     }
 
+	// varidate
+
+	const stringHandList = [];
+	for (let i = 0; i < kifuList.length; i++) {
+		let targetHands = JSON.stringify(kifuList[i]._hands);
+		targetHands = targetHands.slice(1);
+		targetHands = targetHands.slice(0, -1);
+		stringHandList.push(targetHands);
+	}
+
+	for (let i = 0; i < stringHandList.length; i++) {
+		const targetHands = stringHandList[i];
+		for (let ii = 0; ii < stringHandList.length; ii++) {
+			if (i === ii) { continue; }
+			if (stringHandList[ii].indexOf(targetHands) > -1) {
+				alert("内部エラー：id=" + i + " は、id=" + ii + " と同一または id=" + ii + " に含まれます");
+				return false;
+			}
+		}
+	}
+
     this.kifuAll = new KifuAll(kifuList);
+
+	return true;
 }
 
 
@@ -446,7 +469,7 @@ function View() {
     const ban = new Ban();
 
     setTimeout(function () {
-        ban.readSGF();
+        if (!ban.readSGF()) { return; }
         self.kifuAllNum = ban.kifuAll.kifuList.length;
         refleshCells();
         self.ready(true);
