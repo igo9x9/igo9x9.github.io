@@ -21,10 +21,28 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 	<link rel="stylesheet" href="app.css">
 	<style>
+		body{
+		    min-height: 100vh;
+			position: relative;
+		    padding-bottom: 200px;
+		    box-sizing: border-box;
+			
+		}
+		footer{
+			font-size: 0.9em;
+		    width: 100%;
+		    color: #535c68;
+		    padding: 20px 0;
+		    background-color: #f7f1e3;
+
+			position: absolute;
+			bottom: 0;
+		}
 		td>img {
 			display: block;
 			width: 100%;
@@ -48,13 +66,14 @@
 
 		<p>
 			<img src="img2/smartphone_neru_man.png" align="right" style="margin:5px">
-			９路盤の棋譜をダラダラとゴロ寝しながら眺めたかったので作りました。
+			囲碁の９路盤の棋譜を集めたサイトです。
+			ダラダラとゴロ寝しながら棋譜を眺めたかったので作りました。
 			棋譜は、対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で名付けられている戦法名ごとに分けています。
             コンピュータ同士を手動で対局させて棋譜も手作業で編集するという、流行りのAIとは全く無縁のアナログな方法でやっています。
 		</p>
 
 		<p>
-			棋譜のほとんどは、安斎伸彰先生の書籍「<a href="https://www.amazon.co.jp/%E6%B1%BA%E5%AE%9A%E7%89%88-%E5%9B%B2%E7%A2%81-9%E8%B7%AF%E7%9B%A4%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89-%E5%9B%B2%E7%A2%81%E4%BA%BA%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9-%E5%AE%89%E6%96%8E/dp/4839966923">決定版!囲碁9路盤完全ガイド</a>」（囲碁人ブックス）を参考にさせていただいています。
+			棋譜の大半は、安斎伸彰先生の書籍「<a href="https://www.amazon.co.jp/%E6%B1%BA%E5%AE%9A%E7%89%88-%E5%9B%B2%E7%A2%81-9%E8%B7%AF%E7%9B%A4%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89-%E5%9B%B2%E7%A2%81%E4%BA%BA%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9-%E5%AE%89%E6%96%8E/dp/4839966923">決定版!囲碁9路盤完全ガイド</a>」（囲碁人ブックス）を参考にさせていただいています。
 			書籍の通りに手順を進めた後、続きは囲碁ソフトに打たせるという他力本願ぶりです。
 			なお、囲碁ソフトが最善手を指すとは限らないため、例えば書籍で「黒よし」となっている形勢から白が勝ったりする場合があります。
 			正しい形勢判断は書籍を購入してご確認ください。
@@ -71,7 +90,6 @@
 
 		<h3>９路盤の棋譜</h3>
 
-		<div class="d-block d-md-none" style="width:100%;text-align:center"><small class="text-muted">左右にスワイプで切り替えられます</small></div>
 		<div class="acarousel" style="background-color:#eee;display:none">
 
 			<div style="margin:0 3px 20px 3px;cursor:grab;outline:none" class="text-center">
@@ -612,14 +630,13 @@
 			</div>
 
 		</div>
-
+		<div class="d-block d-md-none" style="width:100%;text-align:center;margin-top:5px;"><span class="text-muted"><i class="far fa-hand-point-up fa-fw"></i> 横にスワイプしてください</span></div>
 
 
 		<br style="margin-top:50px">
 
 		<h3>おまけ</h3>
 
-		<div class="d-block d-md-none" style="width:100%;text-align:center"><small class="text-muted">左右にスワイプで切り替えられます</small></div>
 		<div class="acarousel" style="background-color:#eee;display:none;">
 
 			<div style="margin:0 3px 20px 3px;cursor:grab;outline:none" class="text-center">
@@ -837,24 +854,32 @@
 			</div>
 
 		</div>
+		<div class="d-block d-md-none" style="width:100%;text-align:center;margin-top:5px;"><span class="text-muted"><i class="far fa-hand-point-up fa-fw"></i> 横にスワイプしてください</span></div>
 
 
 		<br style="margin-top:50px">
 
-		<h3>参考にさせて頂いたサイト</h3>
-		<ul>
-			<li><a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a></li>
-			<li><a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a></li>
-			<li><a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a></li>
-		</ul>
-
-		<hr>
-
-		<div class="text-center">
-			<a href="mailto:ando19721226@gmail.com">メール</a>
-		</div>
-
 	</div>
+
+	<div class="d-block d-md-none" style="height:50px"></div>
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<i class="fas fa-link fa-fw"></i> 参考にさせて頂いたサイト
+					<ul>
+						<li><a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a></li>
+						<li><a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a></li>
+						<li><a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a></li>
+					</ul>
+					<hr class="d-block d-md-none">
+				</div>
+				<div class="col-md-6">
+					<i class="fas fa-envelope fa-fw"></i> <a href="mailto:ando19721226@gmail.com">ando19721226@gmail.com</a>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 	<script>
 		$(document).ready(function(){
@@ -872,9 +897,10 @@
 				{
 					breakpoint: 768,
 					settings: {
-						centerPadding: '30px',
+						centerPadding: '40px',
 						slidesToShow: 1,
 						arrows: false,
+						dots: false
 					}
 				}]
 			});
