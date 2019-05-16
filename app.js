@@ -118,7 +118,7 @@ KifuAll.prototype.getNextHands = function () {
             x: kifuHand.x,
             y: kifuHand.y,
             winColors: [kifu.winColor()],
-            predication: function () {
+            predication: function (color) {
                 let blackWillWin = 0;
                 this.winColors.forEach(function (item) {
                     if (item === "B") {
@@ -127,12 +127,17 @@ KifuAll.prototype.getNextHands = function () {
                         blackWillWin += 0.5;
                     }
                 });
-                const blackWinPer = blackWillWin / this.winColors.length;
-                if (blackWinPer === 1) { return "黒勝ち"; }
-                if (blackWinPer === 0) { return "白勝ち"; }
-                if (blackWinPer >= 0.6) { return "黒優勢"; }
-                if (blackWinPer <= 0.4) { return "白優勢"; }
-                return "互角";
+                const blackWinPer = Math.floor(blackWillWin / this.winColors.length * 100);
+                //if (blackWinPer === 1) { return "黒勝ち"; }
+                //if (blackWinPer === 0) { return "白勝ち"; }
+                //if (blackWinPer >= 0.6) { return "黒優勢"; }
+                //if (blackWinPer <= 0.4) { return "白優勢"; }
+                //return "互角";
+                if (color === "黒") {
+                    return blackWinPer;
+                } else {
+                    return 100 - blackWinPer; 
+                }
             }
         });
         nextHandIndex += 1;
@@ -707,6 +712,13 @@ const html = '\
                 </table>\
             </div>\
 \
+            <div class="buttons-wrapper">\
+                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><<</button>\
+                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><</button>\
+                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary btn-lg\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
+                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px">>></button>\
+            </div>\
+\
             <div class="message-wrapper">\
                 <div data-bind="html:message"></div>\
             </div>\
@@ -716,19 +728,12 @@ const html = '\
                 <!-- ko foreach: nextHands().sort(function(a,b) { return a.nextHand.nextHandIndex - b.nextHand.nextHandIndex }) -->\
                     <button class="btn text-left" data-bind="click:$parent.choise, css:{\'btn-dark\':$parent.nextColor()==\'黒\',\'btn-outline-dark white\':$parent.nextColor()==\'白\'}" style="margin-bottom:5px;padding-left:20px;width:250px;">\
                         <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
-                        <span data-bind="text:\'（\' + nextHand.predication() + \'）\'"></span>\
+                        <span style="display:inline-block;width:50px;text-align:right" data-bind="text:nextHand.predication($parent.nextColor())+ \'%\'"></span>\
                         <span class="float-right" data-bind="text: \'棋譜数：\' + nextHand.winColors.length"></span>\
                     </button>\
                 <!-- /ko -->\
             </div>\
             <!-- /ko -->\
-\
-            <div class="buttons-wrapper">\
-                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><<</button>\
-                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><</button>\
-                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary btn-lg\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
-                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px">>></button>\
-            </div>\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数：<span data-bind="text:kifuAllNum"></span>件</span>\
@@ -749,16 +754,12 @@ const html = '\
                 </button>\
             </div>\
             <div class="modal-body">\
-                <p>登録している棋譜のほとんどは、コンピュータ同士を中国ルール（コミ7目）で対戦させたものです。</p>\
-                <p>棋譜が分岐した時に表示される優劣を表すコメントの意味は下記の通り、形勢判断によるものではなく、単に登録している棋譜がたまたまそういう結果になった、という点にご注意ください。</p>\
-                <dl>\
-                    <dt>黒勝ち or 白勝ち</dt>\
-                    <dd>その手から続く棋譜の結果が、全て黒の勝ち、または白の勝ちであることを表します。</dd>\
-                    <dt>黒優勢 or 白優勢</dt>\
-                    <dd>その手から続く棋譜の結果が黒勝利と白勝利のどちらもある場合、どちらの色の勝率が高いかを表します。</dd>\
-                    <dt>互角</dt>\
-                    <dd>勝率の差が小さいか、持碁であることを表します。</dd>\
-                </dl>\
+				<p>\
+					棋譜が枝分かれする場合、どの手で進めるかの選択ボタンが表示されます。\
+					その時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
+					ただし、「勝つ確率」といっても形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
+					登録している棋譜が最善手を尽くしている訳ではありませんので、あくまで参考程度にご覧ください。\
+				</p>\
             </div>\
         </div>\
     </div>\

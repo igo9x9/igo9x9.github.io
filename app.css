@@ -11,7 +11,7 @@
 }
 .app-wrapper .buttons-wrapper {
 	margin-bottom: 5px;
-	padding: 5px 0px 10px 0px;
+	padding: 10px 0px 5px 0px;
 	text-align: center;
 }
 .app-wrapper .bunki-wrapper {
@@ -20,7 +20,7 @@
 	text-align: center;
 }
 .app-wrapper .message-wrapper {
-	margin: 10px;
+	margin: 0 10px 5px 10px;
 	text-align: center;
 	min-height: 1.5rem;
 }
