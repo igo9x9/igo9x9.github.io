@@ -462,6 +462,8 @@ function View() {
 
     self.cells = [];
 
+    const history = ko.observableArray();
+
     // init cells by null
     for (let y = 0; y < banSize; y++) {
         const cols = [];
@@ -535,11 +537,13 @@ function View() {
             const nextHands = ban.getCellsOnlyHasNextHand();
             if (nextHands.length > 1) {
                 self.message(getNextColor() + "番です。");
-        } else if (nextHands.length === 0) {
-            const result = ban.kifuAll.getActiveKifuList()[0].result();
-            self.message(parseResult(result));
-            return false;
-        }
+            } else if (nextHands.length === 0) {
+                const result = ban.kifuAll.getActiveKifuList()[0].result();
+                self.message(parseResult(result));
+            }
+
+            // push history
+            history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
         }
     };
 
@@ -576,6 +580,7 @@ function View() {
             return;
         }
         if (ban.popHand()) {
+            history.pop();
             refleshCells()
             const nextHands = ban.getCellsOnlyHasNextHand();
             if (nextHands.length > 1) {
@@ -628,6 +633,15 @@ function View() {
         self.choise({nextHand: {x: firstX, y: firstY}});
     };
 
+    self.sgfString = ko.computed(function () {
+        let sgf = "(;FF[1]CA[UTF-8]SZ[9]PB[?]PW[?]KM[7.0]RU[Chinese]";
+        history().forEach(function(hand) {
+            const x = String.fromCharCode(97 + hand.x);
+            const y = String.fromCharCode(97 + hand.y);
+            sgf += ";" + hand.c + "[" + x + y + "]";
+        });
+        return sgf + ")";
+    });
 }
 
 const html = '\
@@ -760,6 +774,11 @@ const html = '\
 					ただし、「勝つ確率」といっても形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
 					登録している棋譜が最善手を尽くしている訳ではありませんので、あくまで参考程度にご覧ください。\
 				</p>\
+                <p>\
+                    <strong>現在の棋譜（SGF）</strong>\
+                    <blockquote class="blockquote border rounded" data-bind="text:sgfString()" style="word-break:break-all;font-size: 0.8em; padding: 10px;">\
+                    </blockquote>\
+                </p>\
             </div>\
         </div>\
     </div>\
