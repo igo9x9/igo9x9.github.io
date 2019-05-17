@@ -727,10 +727,10 @@ const html = '\
             </div>\
 \
             <div class="buttons-wrapper">\
-                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><<</button>\
-                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><</button>\
-                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary btn-lg\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
-                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px">>></button>\
+                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-double-left"></i></button>\
+                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-left"></i></button>\
+                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
+                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-double-right"></i></button>\
             </div>\
 \
             <div class="message-wrapper">\
@@ -751,7 +751,7 @@ const html = '\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数：<span data-bind="text:kifuAllNum"></span>件</span>\
-                <a href="#" class="float-right" data-toggle="modal" data-target="#help">ヘルプ</a>\
+                <a href="#" class="float-right" data-toggle="modal" data-target="#help"><i class="fas fa-question-circle"></i></a>\
             </div>\
 \
         </div>\

@@ -688,10 +688,10 @@ const html = '\
             <!-- /ko -->\
 \
             <div class="buttons-wrapper">\
-                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><<</button>\
-                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><</button>\
-                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary btn-lg\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
-                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px">>></button>\
+                <button class="btn" data-bind="click:fastBackward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-double-left"></i></button>\
+                <button class="btn" data-bind="click:backward, enable:canBackward, class: canBackward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-left"></i></button>\
+                <button class="btn" data-bind="click:foward, enable:canFoward, class: canFoward() ? \'btn-primary\' : \'btn-outline-primary\'" style="width:80px">進む</button>\
+                <button class="btn" data-bind="click:fastFoward, enable:canFoward, class: canFoward() ? \'btn-secondary\' : \'btn-outline-secondary\'" style="width:60px"><i class="fas fa-angle-double-right"></i></button>\
             </div>\
 \
         </div>\
