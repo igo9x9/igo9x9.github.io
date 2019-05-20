@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139602846-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-139602846-1');
+	</script>
+	<meta charset="UTF-8" />
+    <title>リフティング</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+	<meta name="description" content="囲碁クエストの戦法名「リフティング」の棋譜を集めました。" />
+	<link rel="icon" type="image/x-icon" href="./favicon.ico">
+	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+	<link rel="stylesheet" href="app.css">
+	<style>
+		body{
+			background-color:#ecf0f1;
+		}
+		td>img {
+			display: block;
+			width: 100%;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container" style="margin-bottom:50px">
+
+		<div class="row">
+
+			<div class="col-md-4">
+
+				<div class="text-center" id="loading" style="height: 266px;">
+					<p class="text-primary" style="margin-top:200px"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
+				</div>
+
+				<app></app>
+
+			</div>
+
+			<div class="col-md-8" style="margin-top:20px">
+
+				<h4>リフティング</h4>
+
+				<p>
+					黒①から黒③までの手順は、囲碁クエストでは「リフティング」と呼ばれます。
+					そこからの棋譜を集めました。
+				</p>
+
+				<table cellpadding="0" cellspacing="0" border="0" style="margin:20px auto 20px auto;background-color:#dcb35d;">
+					<tbody>
+						<tr>
+							<td><img src="img2/top-left.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-middle.png"></td>
+							<td><img src="img2/top-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/b3.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/b1.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/w2.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/middle-left.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-middle.png"></td>
+							<td><img src="img2/middle-right.png"></td>
+						</tr>
+						<tr>
+							<td><img src="img2/bottom-left.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-middle.png"></td>
+							<td><img src="img2/bottom-right.png"></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+
+
+
+		<hr>
+
+		<div class="text-center"><a href="index.html"><i class="fas fa-home"></i> トップページへ戻る</a></div>
+
+	</div>
+
+
+<div id="sgf" style="display:none">
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+2.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[gd]
+;B[ch];W[eh];B[gb];W[cc]
+;B[db];W[bh];B[cg];W[ci]
+;B[bg];W[ed];B[dd];W[gc]
+;B[hb];W[fb];B[fc];W[ec]
+;B[eb];W[fd];B[fa];W[hc]
+;B[ff];W[fg];B[gg];W[ef]
+;B[fe];W[ge];B[de];W[gh]
+;B[ic];W[ib];B[ia];W[id]
+;B[ib];W[bi];B[ie];W[hd]
+;B[hg];W[hf];B[hh];W[hi]
+;B[ah];W[ga];B[fc];W[ih]
+;B[fb];W[ig];B[ag];W[di]
+;B[cb];W[ai];B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+4.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[gd]
+;B[ch];W[eh];B[fc];W[gc]
+;B[ff];W[gg];B[fg];W[fh]
+;B[gb];W[hb];B[fb];W[bh]
+;B[bg];W[ci];B[cg];W[fe]
+;B[ef];W[fd];B[ed];W[ha]
+;B[bi];W[ai];B[di];W[ei]
+;B[ag];W[cc];B[ah];W[db]
+;B[bb];W[cb];B[bc];W[bd]
+;B[cd];W[ce];B[dd];W[fa]
+;B[ga];W[ba];B[be];W[ad]
+;B[ab];W[ae];B[ea];W[bf]
+;B[af];W[bi];B[di];W[ci]
+;B[bi];W[gh];B[di];W[eb]
+;B[ec];W[ci];B[he];W[di]
+;B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[W+8.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[gd]
+;B[ch];W[eh];B[fc];W[gc]
+;B[gb];W[hb];B[fb];W[bh]
+;B[ci];W[cg];B[bg];W[cf]
+;B[ah];W[bf];B[bi];W[de]
+;B[ef];W[cc];B[cd];W[bd]
+;B[dd];W[bb];B[cb];W[bc]
+;B[db];W[af];B[ag];W[ce]
+;B[ad];W[ac];B[ae];W[be]
+;B[ba];W[ca];B[da];W[ed]
+;B[fd];W[fe];B[ec];W[ff]
+;B[ed];W[ga];B[ab];W[aa]
+;B[hc];W[hd];B[ab];W[fa]
+;B[ha];W[ia];B[ea];W[aa]
+;B[ha];W[ca];B[gg];W[ba]
+;B[fg];W[hf];B[hg];W[ig]
+;B[ih];W[if];B[ga];W[fh]
+;B[ic];W[hh];B[id];W[ie]
+;B[ib];W[di];B[ge];W[gh]
+;B[he];W[tt];B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+14.0]
+;B[ee];W[eg];B[dc];W[ec]
+;B[dg];W[dh];B[cg];W[db]
+;B[cc];W[ed];B[de];W[gg]
+;B[gd];W[gc];B[hc];W[fd]
+;B[gb];W[fe];B[fb];W[eb]
+;B[ge];W[gf];B[hf];W[hg]
+;B[he];W[ch];B[bh];W[bi]
+;B[bg];W[cb];B[ef];W[bc]
+;B[eh];W[fg];B[di];W[fh]
+;B[ci];W[ce];B[ff];W[dd]
+;B[df];W[dh];B[ch];W[hh]
+;B[gi];W[fi];B[ig];W[gh]
+;B[ih];W[hi];B[ei];W[fc]
+;B[hb];W[bf];B[af];W[ae]
+;B[ag];W[cf];B[ai];W[fa]
+;B[ga];W[ea];B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[W+8.0]
+;B[ee];W[eg];B[dc];W[ec]
+;B[dg];W[dh];B[cg];W[db]
+;B[cc];W[ed];B[de];W[gg]
+;B[gd];W[gc];B[hc];W[fe]
+;B[fd];W[fc];B[ge];W[hb]
+;B[ff];W[ch];B[fg];W[fh]
+;B[cb];W[hd];B[he];W[ic]
+;B[hg];W[bg];B[bf];W[bh]
+;B[ef];W[eh];B[gh];W[gi]
+;B[gf];W[hh];B[ih];W[gg]
+;B[eb];W[fb];B[gh];W[cf]
+;B[df];W[gg];B[ag];W[ah]
+;B[gh];W[af];B[be];W[gg]
+;B[ie];W[ea];B[gh];W[hi]
+;B[ca];W[ae];B[ad];W[ag]
+;B[bd];W[dd];B[cd];W[da]
+;B[id];W[hc];B[gg];W[fi]
+;B[ig];W[ii];B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[ch]
+;B[gd];W[bf];B[be];W[ce]
+;B[bd];W[cf];B[he];W[hf]
+;B[fg];W[ff];B[ef];W[eh]
+;B[if];W[ig];B[ie];W[hh]
+;B[fe];W[cd];B[cc];W[ae]
+;B[cg];W[bg];B[bc];W[dd]
+;B[ed];W[ge];B[hc];W[ad]
+;B[ac];W[af];B[bh];W[ah]
+;B[bi];W[ci];B[gh];W[fh]
+;B[hi];W[gg];B[ih];W[ii]
+;B[de];W[ai];B[ih];W[ec]
+;B[fd];W[ii];B[bh];W[bi]
+;B[ih];W[eb];B[db];W[ii]
+;B[fb];W[gi];B[fc];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[W+2.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[ch]
+;B[gd];W[bf];B[be];W[ce]
+;B[bd];W[cf];B[he];W[hf]
+;B[fg];W[ff];B[ef];W[eh]
+;B[if];W[ig];B[ie];W[gg]
+;B[dd];W[cd];B[cc];W[ae]
+;B[bc];W[ge];B[hd];W[fe]
+;B[fd];W[cg];B[ih];W[hg]
+;B[gh];W[fh];B[ad];W[de]
+;B[ed];W[af];B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+12.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[dg];W[dh];B[df];W[ch]
+;B[gd];W[bf];B[be];W[hd]
+;B[he];W[ge];B[hc];W[fd]
+;B[gc];W[ce];B[bd];W[cf]
+;B[hf];W[ed];B[dd];W[de]
+;B[gg];W[fg];B[gh];W[ae]
+;B[bc];W[ec];B[eb];W[fe]
+;B[fc];W[ef];B[fh];W[eh]
+;B[ad];W[af];B[ei];W[cc]
+;B[cd];W[cb];B[db];W[di]
+;B[fi];W[tt];B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+20.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[ff];W[fg];B[ge];W[hf]
+;B[cf];W[cg];B[df];W[bg]
+;B[he];W[ie];B[id];W[if]
+;B[hd];W[be];B[bf];W[bc]
+;B[dg];W[dh];B[ch];W[bh]
+;B[eh];W[ci];B[gg];W[fh]
+;B[gh];W[af];B[gi];W[hh]
+;B[ei];W[di];B[fi];W[dd]
+;B[ec];W[ed];B[fd];W[de]
+;B[cc];W[ce];B[ef];W[bb]
+;B[cb];W[ba];B[ca];W[cd]
+;B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[W+6.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[ge];W[he];B[ff];W[gg]
+;B[dg];W[dh];B[cg];W[gd]
+;B[ef];W[eh];B[gb];W[fc]
+;B[fb];W[ec];B[eb];W[dd]
+;B[ed];W[cc];B[db];W[ce]
+;B[bd];W[be];B[cd];W[de]
+;B[bc];W[bg];B[bh];W[bf]
+;B[ch];W[df];B[gc];W[ah]
+;B[fd];W[fe];B[fg];W[fh]
+;B[ge];W[hd];B[hc];W[bi]
+;B[ag];W[af];B[ci];W[di]
+;B[ai];W[ag];B[ad];W[bi]
+;B[gh];W[hg];B[ai];W[hh]
+;B[ei];W[gi];B[ic];W[bi]
+;B[ae];W[cf];B[ie];W[if]
+;B[id];W[fe];B[ig];W[ih]
+;B[ge];W[hf];B[fe];W[tt]
+;B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[W+2.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[ff];W[fg];B[ge];W[dd]
+;B[de];W[cc];B[gg];W[gh]
+;B[cd];W[db];B[ed];W[eb]
+;B[cb];W[bc];B[bb];W[gc]
+;B[fc];W[fb];B[hb];W[hc]
+;B[gb];W[ec];B[fd];W[ib]
+;B[ha];W[ic];B[hf];W[hg]
+;B[dh];W[dg];B[cg];W[cf]
+;B[bd];W[bg];B[ch];W[df]
+;B[bh];W[dd];B[hh];W[gf]
+;B[dc];W[gg];B[hd];W[ia]
+;B[bf];W[be];B[ag];W[ce]
+;B[dd];W[if];B[ie];W[he]
+;B[gd];W[ga];B[hf];W[ih]
+;B[ig];W[hi];B[eh];W[ae]
+;B[af];W[if];B[he];W[ef]
+;B[ac];W[ad];B[fi];W[fh]
+;B[ei];W[ig];B[da];W[ea]
+;B[ca];W[gi];B[fe];W[id]
+;B[tt];W[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+22.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[ff];W[fg];B[ge];W[dd]
+;B[de];W[cc];B[cd];W[db]
+;B[ed];W[eb];B[cb];W[bc]
+;B[bb];W[gc];B[hc];W[hb]
+;B[cg];W[hf];B[fc];W[ca]
+;B[da];W[ea];B[ac];W[ba]
+;B[ab];W[bd];B[be];W[ae]
+;B[gb];W[ga];B[gd];W[ch]
+;B[bh];W[dh];B[bi];W[dg]
+;B[cf];W[ef];B[fe];W[he]
+;B[hd];W[id];B[ic];W[ie]
+;B[ci];W[di];B[df];W[tt]
+;B[tt]
+)
+
+@@@
+
+(;FF[1]SZ[9]PB[]PW[]KM[7.0]RU[Chinese]AP[]
+DT[2019-05-20 23:00:45]RE[B+10.0]
+;B[ee];W[eg];B[dc];W[gf]
+;B[ff];W[fg];B[ge];W[dd]
+;B[de];W[cc];B[cd];W[db]
+;B[ed];W[eb];B[cb];W[bc]
+;B[bb];W[gc];B[hc];W[hb]
+;B[cg];W[hf];B[fc];W[ca]
+;B[da];W[ab];B[ba];W[bd]
+;B[be];W[gd];B[he];W[fb]
+;B[ec];W[fd];B[fe];W[hd]
+;B[if];W[ig];B[ie];W[hh]
+;B[ic];W[ac];B[ae];W[gb]
+;B[id];W[ib];B[ea];W[cf]
+;B[ad];W[ch];B[ha];W[bf]
+;B[df];W[dg];B[ce];W[bg]
+;B[aa];W[af];B[ef];W[tt]
+;B[tt]
+)
+
+</div>
+
+	<script src="app.js"></script>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
