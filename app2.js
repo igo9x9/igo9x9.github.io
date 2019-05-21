@@ -503,11 +503,15 @@ function View() {
             const nextHands = ban.getCellsOnlyHasNextHand();
             if (nextHands.length > 1) {
                 self.message(getNextColor() + "番です。");
-        } else if (nextHands.length === 0) {
-            const result = ban.kifuAll.getActiveKifuList()[0].result();
-            self.message(parseResult(result));
-            return false;
-        }
+            } else if (nextHands.length === 0) {
+                const result = ban.kifuAll.getActiveKifuList()[0].result();
+                self.message(parseResult(result));
+                return false;
+            } else {
+                if (ban.kifuAll.getActiveKifuList().length === 1) {
+                    self.message("この先分岐はありません。");
+                }
+            }
         }
     };
 

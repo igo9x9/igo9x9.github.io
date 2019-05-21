@@ -540,6 +540,10 @@ function View() {
             } else if (nextHands.length === 0) {
                 const result = ban.kifuAll.getActiveKifuList()[0].result();
                 self.message(parseResult(result));
+            } else {
+                if (ban.kifuAll.getActiveKifuList().length === 1) {
+                    self.message("この先分岐はありません。");
+                }
             }
 
             // push history
