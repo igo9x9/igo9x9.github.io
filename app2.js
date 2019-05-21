@@ -596,7 +596,7 @@ const html = '\
         <div class="app-wrapper shadow-sm" style="display:none">\
 \
             <div>\
-                <table cellpadding="0" cellspacing="0" border="0" style="margin: auto; border: 5px solid #dcb35d;background-color:#dcb35d;">\
+                <table cellpadding="0" cellspacing="0" border="0" style="margin: auto; border: 5px solid #dcb35d;background-color:#dcb35d;" data-bind="click:foward">\
                     <tbody>\
                         <!-- ko foreach: cells -->\
                         <tr>\
@@ -649,7 +649,7 @@ const html = '\
                                     <!-- /ko -->\
                                     <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
                                         <!-- ko if:$parents[1].currentColor() === "B" -->\
-                                            <td style="position: relative;">\
+                                            <td style="position: relative;cursor:pointer;" data-bind="click:$parents[1].choise">\
                                                 <img src="./img/none.png">\
                                                 <div style="color:#000;text-shadow: 0px 0px 5px silver;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
@@ -657,7 +657,7 @@ const html = '\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
-                                            <td style="position: relative;">\
+                                            <td style="position: relative;cursor:pointer;" data-bind="click:$parents[1].choise">\
                                                 <img src="./img/none.png">\
                                                 <div style="color:#fff;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
