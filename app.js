@@ -179,6 +179,8 @@ const Cell = function (type) {
     this.nextHand = null;
     this.stone = null;
     this.isLastHand = false;
+    this.dame = 0;
+    this.group = -1;
 };
 
 const Page = function () {
@@ -225,6 +227,7 @@ Page.prototype.copy = function () {
         row.forEach(function (cell) {
             cell.nextHand = null;
             cell.isLastHand = false;
+            cell.group = -1;
         });
     });
     return page;
@@ -235,6 +238,7 @@ Page.prototype.putHand = function (hand) {
     cell.stone = hand.color;
     cell.isLastHand = true;
     this._removeDeadStones(hand.color);
+    this._countDame();
 };
 
 Page.prototype.setNextHand = function (nextHand) {
@@ -283,7 +287,7 @@ Page.prototype._removeDeadStones = function (color) {
                         }
                     }
                     // bottom
-                    if (y < 8) {
+                    if (y < banSize - 1) {
                         cell = this.rows[y+1][x];
                         if (cell.stone != color && cell.isLive) {
                             this.rows[y][x].isLive = true;
@@ -315,6 +319,130 @@ Page.prototype._removeDeadStones = function (color) {
             }
         }
 };
+
+Page.prototype._countDame = function () {
+
+
+    function updateGroup(rows, targetCell, nearCell) {
+        if (targetCell.stone === nearCell.stone) {
+            if (nearCell.group !== -1) {
+                if (targetCell.group === -1) {
+                    targetCell.group = nearCell.group;
+                } else {
+                    for (let y = 0; y < banSize; y++) {
+                        for (let x = 0; x < banSize; x++) {
+                            if (rows[y][x].group === targetCell.group) {
+                                rows[y][x].group = nearCell.group;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // create group
+    let nextGroupNo = 0;
+    let lastResult = "";
+
+    for (;;) {
+        for (let y = 0; y < banSize; y++) {
+            for (let x = 0; x < banSize; x++) {
+                const cell = this.rows[y][x];
+                if (!cell.stone) { continue; }
+                // upper
+                if (y > 0) {
+                    const nearCell = this.rows[y-1][x];
+                    updateGroup(this.rows, cell, nearCell);
+                }
+                // left
+                if (x > 0) {
+                    const nearCell = this.rows[y][x-1];
+                    updateGroup(this.rows, cell, nearCell);
+                }
+                // right
+                if (x < banSize - 1) {
+                    const nearCell = this.rows[y][x+1];
+                    updateGroup(this.rows, cell, nearCell);
+                }
+                // bottom
+                if (y < banSize - 1) {
+                    const nearCell = this.rows[y+1][x];
+                    updateGroup(this.rows, cell, nearCell);
+                }
+
+                if (this.rows[y][x].group === -1) {
+                    this.rows[y][x].group = nextGroupNo;
+                    nextGroupNo += 1;
+                }
+            }
+        }
+        const result = JSON.stringify(this.rows);
+        if (result === lastResult) {
+            break;
+        }
+        lastResult = result;
+    }
+
+    // dameList[groupNo] = ["x,y"]
+    let dameList = {};
+
+    for (let y = 0; y < banSize; y++) {
+        for (let x = 0; x < banSize; x++) {
+            const cell = this.rows[y][x];
+            if (!cell.stone) { continue; }
+            if (!dameList[cell.group]) {
+                dameList[cell.group] = [];
+            }
+            // upper
+            if (y > 0) {
+                if (!this.rows[y-1][x].stone) {
+                    const dame = x + "," + (y - 1);
+                    if (dameList[cell.group].indexOf(dame) === -1) {
+                        dameList[cell.group].push(dame);
+                    }
+                }
+            }
+            // bottom
+            if (y < banSize - 1) {
+                if (!this.rows[y+1][x].stone) {
+                    const dame = x + "," + (y + 1);
+                    if (dameList[cell.group].indexOf(dame) === -1) {
+                        dameList[cell.group].push(dame);
+                    }
+                }
+            }
+            // right
+            if (x < banSize - 1) {
+                if (!this.rows[y][x+1].stone) {
+                    const dame = (x + 1) + "," + y;
+                    if (dameList[cell.group].indexOf(dame) === -1) {
+                        dameList[cell.group].push(dame);
+                    }
+                }
+            }
+            // left
+            if (x > 0) {
+                if (!this.rows[y][x-1].stone) {
+                    const dame = (x - 1) + "," + y;
+                    if (dameList[cell.group].indexOf(dame) === -1) {
+                        dameList[cell.group].push(dame);
+                    }
+                }
+            }
+        }
+    }
+
+    // set dame
+    for (let y = 0; y < banSize; y++) {
+        for (let x = 0; x < banSize; x++) {
+            const group = this.rows[y][x].group;
+            if (group === -1) { continue; }
+            this.rows[y][x].dame = dameList[group].length;
+        }
+    }
+};
+
 
 // -----------------
 
@@ -420,30 +548,30 @@ Ban.prototype.readSGF = function () {
         kifuList.push(new Kifu(hands, winner));
     }
 
-	// varidate
+    // varidate
 
-	const stringHandList = [];
-	for (let i = 0; i < kifuList.length; i++) {
-		let targetHands = JSON.stringify(kifuList[i]._hands);
-		targetHands = targetHands.slice(1);
-		targetHands = targetHands.slice(0, -1);
-		stringHandList.push(targetHands);
-	}
+    const stringHandList = [];
+    for (let i = 0; i < kifuList.length; i++) {
+        let targetHands = JSON.stringify(kifuList[i]._hands);
+        targetHands = targetHands.slice(1);
+        targetHands = targetHands.slice(0, -1);
+        stringHandList.push(targetHands);
+    }
 
-	for (let i = 0; i < stringHandList.length; i++) {
-		const targetHands = stringHandList[i];
-		for (let ii = 0; ii < stringHandList.length; ii++) {
-			if (i === ii) { continue; }
-			if (stringHandList[ii].indexOf(targetHands) > -1) {
-				alert("内部エラー：id=" + i + " は、id=" + ii + " と同一または id=" + ii + " に含まれます");
-				return false;
-			}
-		}
-	}
+    for (let i = 0; i < stringHandList.length; i++) {
+        const targetHands = stringHandList[i];
+        for (let ii = 0; ii < stringHandList.length; ii++) {
+            if (i === ii) { continue; }
+            if (stringHandList[ii].indexOf(targetHands) > -1) {
+                alert("内部エラー：id=" + i + " は、id=" + ii + " と同一または id=" + ii + " に含まれます");
+                return false;
+            }
+        }
+    }
 
     this.kifuAll = new KifuAll(kifuList);
 
-	return true;
+    return true;
 }
 
 
@@ -461,6 +589,8 @@ function View() {
     self.kifuAllNum = 0;
 
     self.cells = [];
+
+    self.showDame = ko.observable(false);
 
     const history = ko.observableArray();
 
@@ -660,18 +790,70 @@ const html = '\
                             <!-- ko foreach: $data -->\
                                 <!-- ko if:stone === "B" -->\
                                     <!-- ko if:!isLastHand -->\
-                                        <td><img src="./img/b.png"></td>\
+                                        <!-- ko if:$parents[1].showDame -->\
+                                            <td style="position: relative">\
+                                                <img src="./img/b.png">\
+                                                <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
+                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                </div>\
+                                            </td>\
+                                        <!-- /ko -->\
+                                        <!-- ko if:!$parents[1].showDame() -->\
+                                            <td>\
+                                                <img src="./img/b.png">\
+                                            </td>\
+                                        <!-- /ko -->\
                                     <!-- /ko -->\
                                     <!-- ko if:isLastHand -->\
-                                        <td><img src="./img/b-last.png"></td>\
+                                        <!-- ko if:$parents[1].showDame -->\
+                                            <td style="position: relative">\
+                                                <img src="./img/b-last.png">\
+                                                <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
+                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                </div>\
+                                            </td>\
+                                        <!-- /ko -->\
+                                        <!-- ko if:!$parents[1].showDame() -->\
+                                            <td>\
+                                                <img src="./img/b-last.png">\
+                                            </td>\
+                                        <!-- /ko -->\
                                     <!-- /ko -->\
                                 <!-- /ko -->\
                                 <!-- ko if:stone === "W" -->\
                                     <!-- ko if:!isLastHand -->\
-                                        <td><img src="./img/w.png"></td>\
+                                        <!-- ko if:$parents[1].showDame -->\
+                                            <td style="position: relative">\
+                                                <img src="./img/w.png">\
+                                                <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
+                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                </div>\
+                                            </td>\
+                                        <!-- /ko -->\
+                                        <!-- ko if:!$parents[1].showDame() -->\
+                                            <td>\
+                                                <img src="./img/w.png">\
+                                            </td>\
+                                        <!-- /ko -->\
                                     <!-- /ko -->\
                                     <!-- ko if:isLastHand -->\
-                                        <td><img src="./img/w-last.png"></td>\
+                                        <!-- ko if:$parents[1].showDame -->\
+                                            <td style="position: relative">\
+                                                <img src="./img/w-last.png">\
+                                                <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
+                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                </div>\
+                                            </td>\
+                                        <!-- /ko -->\
+                                        <!-- ko if:!$parents[1].showDame() -->\
+                                            <td>\
+                                                <img src="./img/w-last.png">\
+                                            </td>\
+                                        <!-- /ko -->\
                                     <!-- /ko -->\
                                 <!-- /ko -->\
                                 <!-- ko if:stone === null -->\
@@ -754,7 +936,11 @@ const html = '\
             <!-- /ko -->\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
-                <span class="text-secondary">全棋譜数：<span data-bind="text:kifuAllNum"></span>件</span>\
+                <span class="text-secondary">全棋譜数<span data-bind="text:kifuAllNum"></span>件</span>\
+                <div class="form-check form-check-inline text-secondary" style="margin-left:7px">\
+                    <input type="checkbox" data-bind="checked: showDame" id="showDame" style="position:relative;top:2px;">\
+                    <label class="form-check-label" for="showDame">ダメ数を表示</label>\
+                </div>\
                 <a href="#" class="float-right" data-toggle="modal" data-target="#help"><i class="fas fa-question-circle"></i></a>\
             </div>\
 \
@@ -779,14 +965,21 @@ const html = '\
                     また、手を選択するボタンの代わりに、盤上のアルファベットを直接クリックすることでも選択できます。\
                     その他の早送りなどはボタンを使ってください。\
                 </p>\
-				<p>\
+                <p>\
                     <strong>パーセントの意味</strong>\
                     <br>\
-					　棋譜が枝分かれした時点で、次の手の選択肢が表示されます。\
-					その時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
-					ただし、「勝つ確率」といっても複雑な形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
-					登録している棋譜が最善手を尽くしている訳ではありませんので（というより意図的に変な手も試しているので）、あまり気にせずにご覧ください。\
-				</p>\
+                    　棋譜が枝分かれした時点で、次の手の選択肢が表示されます。\
+                    その時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
+                    ただし、「勝つ確率」といっても複雑な形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
+                    登録している棋譜が最善手を尽くしている訳ではありませんので（というより意図的に変な手も試しているので）、あまり気にせずにご覧ください。\
+                </p>\
+                <p>\
+                    <strong>ダメ数の表示</strong>\
+                    <br>\
+                    　下の方にある「ダメ数を表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
+                    攻め合いが複雑になってきた時に理解の助けになるかもと思って作った機能です。\
+                    アタリの場合には赤字になります。\
+                </p>\
                 <p>\
                     <strong>現在の棋譜（SGF）</strong>\
                     <blockquote class="blockquote border rounded" data-bind="text:sgfString()" style="word-break:break-all;font-size: 0.8em; padding: 10px;">\
