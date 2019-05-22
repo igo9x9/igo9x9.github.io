@@ -937,10 +937,8 @@ const html = '\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数<span data-bind="text:kifuAllNum"></span>件</span>\
-                <div class="form-check form-check-inline text-secondary" style="margin-left:7px">\
-                    <input type="checkbox" data-bind="checked: showDame" id="showDame" style="position:relative;top:2px;">\
-                    <label class="form-check-label" for="showDame">ダメ数を表示</label>\
-                </div>\
+				<a href="#" style="margin-left:10px" data-bind="visible:!showDame(),click:function(){showDame(true)}">ダメ数表示をON</a>\
+				<a href="#" style="margin-left:10px" data-bind="visible:showDame(),click:function(){showDame(false)}">ダメ数表示をOFF</a>\
                 <a href="#" class="float-right" data-toggle="modal" data-target="#help"><i class="fas fa-question-circle"></i></a>\
             </div>\
 \
@@ -976,7 +974,7 @@ const html = '\
                 <p>\
                     <strong>ダメ数の表示</strong>\
                     <br>\
-                    　下の方にある「ダメ数を表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
+                    　下の方にある「ダメ数表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
                     攻め合いが複雑になってきた時に理解の助けになるかもと思って作った機能です。\
                     アタリの場合には赤字になります。\
                 </p>\
