@@ -888,18 +888,22 @@ const html = '\
                                     <!-- /ko -->\
                                     <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
                                         <!-- ko if:$parents[1].currentColor() === "B" -->\
-                                            <td style="position: relative;cursor:pointer;" data-bind="click:$parents[1].choise, clickBubble: false">\
-                                                <img src="./img/none.png">\
-                                                <div style="color:#000;text-shadow: 0px 0px 5px silver;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
+                                            <td style="position: relative;cursor:pointer;line-height:0.7rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                                <img src="./img/b-next.png">\
+                                                <div style="color:#000;text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)" style="font-size:0.8em"></b>\
+                                                    <br>\
+                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor())+ \'%\'" style="font-size:0.7em"></span>\
                                                 </div>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
-                                            <td style="position: relative;cursor:pointer;" data-bind="click:$parents[1].choise, clickBubble: false">\
-                                                <img src="./img/none.png">\
-                                                <div style="color:#fff;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
+                                            <td style="position: relative;cursor:pointer;line-height:0.7rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                                <img src="./img/w-next.png">\
+                                                <div style="color:#fff;text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)" style="font-size:0.8em"></b>\
+                                                    <br>\
+                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor())+ \'%\'" style="font-size:0.7em"></span>\
                                                 </div>\
                                             </td>\
                                         <!-- /ko -->\
@@ -937,8 +941,8 @@ const html = '\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数<span data-bind="text:kifuAllNum"></span>件</span>\
-				<a href="#" style="margin-left:10px" data-bind="visible:!showDame(),click:function(){showDame(true)}">ダメ数表示をON</a>\
-				<a href="#" style="margin-left:10px" data-bind="visible:showDame(),click:function(){showDame(false)}">ダメ数表示をOFF</a>\
+                <a href="#" style="margin-left:10px" data-bind="visible:!showDame(),click:function(){showDame(true)}">ダメ数表示をON</a>\
+                <a href="#" style="margin-left:10px" data-bind="visible:showDame(),click:function(){showDame(false)}">ダメ数表示をOFF</a>\
                 <a href="#" class="float-right" data-toggle="modal" data-target="#help"><i class="fas fa-question-circle"></i></a>\
             </div>\
 \
