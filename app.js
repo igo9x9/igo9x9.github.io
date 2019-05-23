@@ -888,23 +888,21 @@ const html = '\
                                     <!-- /ko -->\
                                     <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
                                         <!-- ko if:$parents[1].currentColor() === "B" -->\
-                                            <td style="position: relative;cursor:pointer;line-height:0.7rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                            <td style="color:#000;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
                                                 <img src="./img/b-next.png">\
-                                                <div style="color:#000;text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)" style="font-size:0.8em"></b>\
-                                                    <br>\
-                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor())+ \'%\'" style="font-size:0.7em"></span>\
+                                                <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.5em">%</span>\
                                                 </div>\
+												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
-                                            <td style="position: relative;cursor:pointer;line-height:0.7rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                            <td style="color:#fff;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
                                                 <img src="./img/w-next.png">\
-                                                <div style="color:#fff;text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)" style="font-size:0.8em"></b>\
-                                                    <br>\
-                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor())+ \'%\'" style="font-size:0.7em"></span>\
+                                                <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.5em">%</span>\
                                                 </div>\
+												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -926,18 +924,6 @@ const html = '\
             <div class="message-wrapper">\
                 <div data-bind="html:message"></div>\
             </div>\
-\
-            <!-- ko if:nextHands().length > 1 -->\
-            <div class="bunki-wrapper">\
-                <!-- ko foreach: nextHands().sort(function(a,b) { return a.nextHand.nextHandIndex - b.nextHand.nextHandIndex }) -->\
-                    <button class="btn text-left" data-bind="click:$parent.choise, css:{\'btn-dark\':$parent.nextColor()==\'黒\',\'btn-outline-dark white\':$parent.nextColor()==\'白\'}" style="margin-bottom:5px;padding-left:20px;width:250px;">\
-                        <b data-bind="text:String.fromCharCode(nextHand.nextHandIndex + 65)"></b>\
-                        <span style="display:inline-block;width:50px;text-align:right" data-bind="text:nextHand.predication($parent.nextColor())+ \'%\'"></span>\
-                        <span class="float-right" data-bind="text: \'棋譜数：\' + nextHand.winColors.length"></span>\
-                    </button>\
-                <!-- /ko -->\
-            </div>\
-            <!-- /ko -->\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数<span data-bind="text:kifuAllNum"></span>件</span>\
@@ -961,25 +947,28 @@ const html = '\
             </div>\
             <div class="modal-body">\
                 <p>\
-                    <strong>ボタン以外の操作</strong>\
+                    <strong>操作方法</strong>\
                     <br>\
-                    　「進む」ボタンの代わりに、盤をクリック（タッチ）して進めることもできます。\
-                    また、手を選択するボタンの代わりに、盤上のアルファベットを直接クリックすることでも選択できます。\
-                    その他の早送りなどはボタンを使ってください。\
+                    　「進む」ボタンを押す代わりに、盤上の適当な場所を押すことでも進めることができます。\
                 </p>\
                 <p>\
                     <strong>パーセントの意味</strong>\
                     <br>\
-                    　棋譜が枝分かれした時点で、次の手の選択肢が表示されます。\
-                    その時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
+                    　棋譜が枝分かれした時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
                     ただし、「勝つ確率」といっても複雑な形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
                     登録している棋譜が最善手を尽くしている訳ではありませんので（というより意図的に変な手も試しているので）、あまり気にせずにご覧ください。\
+                </p>\
+                <p>\
+                    <strong>黄色い数値の意味</strong>\
+                    <br>\
+                    　パーセントの右下に小さく表示されている黄色い数値は、用意されている棋譜の数です。\
+					この数値が多いほど、私がしつこく棋譜を集めたルートということになります。\
                 </p>\
                 <p>\
                     <strong>ダメ数の表示</strong>\
                     <br>\
                     　下の方にある「ダメ数表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
-                    攻め合いが複雑になってきた時に理解の助けになるかもと思って作った機能です。\
+                    攻め合いが複雑になってきた時、視覚的に分かりやすくなります。\
                     アタリの場合には赤字になります。\
                 </p>\
                 <p>\
