@@ -776,6 +776,19 @@ function View() {
         });
         return sgf + ")";
     });
+
+    self.copySgfToClipboard = function () {
+        if (!confirm("現在までの棋譜（SGF形式）をクリップボードにコピーします。\nよろしいですか？")) {
+            return;
+        }
+        const el = document.createElement("textarea");
+        el.value = self.sgfString();
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        document.body.removeChild(el);
+        alert("クリップボードにコピーしました。");
+    };
 }
 
 const html = '\
@@ -927,8 +940,9 @@ const html = '\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
                 <span class="text-secondary">全棋譜数<span data-bind="text:kifuAllNum"></span>件</span>\
-                <a href="#" style="margin-left:10px" data-bind="visible:!showDame(),click:function(){showDame(true)}">ダメ数表示をON</a>\
-                <a href="#" style="margin-left:10px" data-bind="visible:showDame(),click:function(){showDame(false)}">ダメ数表示をOFF</a>\
+                <a href="#" style="margin-left:10px" data-bind="visible:!showDame(),click:function(){showDame(true)}">ダメ数表示OFF</a>\
+                <a href="#" style="margin-left:10px" data-bind="visible:showDame(),click:function(){showDame(false)}">ダメ数表示ON</a>\
+                <a href="#" style="margin-left:10px" data-bind="click:copySgfToClipboard">SGF</a>\
                 <a href="#" class="float-right" data-toggle="modal" data-target="#help"><i class="fas fa-question-circle"></i></a>\
             </div>\
 \
