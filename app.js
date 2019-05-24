@@ -891,7 +891,7 @@ const html = '\
                                             <td style="color:#000;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
                                                 <img src="./img/b-next.png">\
                                                 <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                                    <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
 												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
@@ -900,7 +900,7 @@ const html = '\
                                             <td style="color:#fff;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
                                                 <img src="./img/w-next.png">\
                                                 <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                                    <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
 												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
