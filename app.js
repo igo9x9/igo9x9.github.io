@@ -628,6 +628,7 @@ function View() {
         const cells = page.rows;
         for (let y = 0; y < banSize; y++) {
             for (let x = 0; x < banSize; x++) {
+                cells[y][x].error = false;
                 if (!self.cells[y][x]) {
                     self.cells[y][x] = ko.observable(cells[y][x]);
                 } else {
@@ -679,6 +680,23 @@ function View() {
             // push history
             history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
         }
+    };
+
+    self.quizeMode = ko.observable(false);
+
+    self.quize = function (x, y) {
+        if (!self.quizeMode()) { return false; }
+        const nextHands = ban.getCellsOnlyHasNextHand();
+        if (nextHands.length === 1) {
+            if (nextHands[0].nextHand.x === x && nextHands[0].nextHand.y === y) {
+                self.foward();
+            } else {
+                const cell = self.cells[y][x]();
+                cell.error = true;
+                self.cells[y][x](cell);
+            }
+        }
+        return false;
     };
 
     self.foward = function () {
@@ -796,7 +814,8 @@ const html = '\
         <div class="app-wrapper shadow-sm" style="display:none">\
 \
             <div>\
-                <table cellpadding="0" cellspacing="0" border="0" style="margin: auto; border: 5px solid #dcb35d;background-color:#dcb35d;" data-bind="click:foward">\
+                <table cellpadding="0" cellspacing="0" border="0" style="margin: auto; border: 5px solid #dcb35d;background-color:#dcb35d;"\
+                data-bind="click:function() {!quizeMode() && foward();}">\
                     <tbody>\
                         <!-- ko foreach: cells -->\
                         <tr>\
@@ -871,33 +890,38 @@ const html = '\
                                 <!-- /ko -->\
                                 <!-- ko if:stone === null -->\
                                     <!-- ko if:(nextHand === null) || ((nextHand !== null) && ($parents[1].nextHands().length <= 1))-->\
-                                        <!-- ko if:type === "top-left" -->\
-                                            <td><img src="./img/top-left.png"></td>\
+                                        <td data-bind="click:$parents[1].quizeMode() && function() {$parents[1].quize($index(), $parentContext.$index())}, clickBubble: false">\
+                                        <!-- ko if:type === "top-left" && !error -->\
+                                            <img src="./img/top-left.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "top-middle" -->\
-                                            <td><img src="./img/top-middle.png"></td>\
+                                        <!-- ko if:type === "top-middle" && !error -->\
+                                            <img src="./img/top-middle.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "top-right" -->\
-                                            <td><img src="./img/top-right.png"></td>\
+                                        <!-- ko if:type === "top-right" && !error -->\
+                                            <img src="./img/top-right.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "middle-left" -->\
-                                            <td><img src="./img/middle-left.png"></td>\
+                                        <!-- ko if:type === "middle-left" && !error -->\
+                                            <img src="./img/middle-left.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "middle-middle" -->\
-                                            <td><img src="./img/middle-middle.png"></td>\
+                                        <!-- ko if:type === "middle-middle" && !error -->\
+                                            <img src="./img/middle-middle.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "middle-right" -->\
-                                            <td><img src="./img/middle-right.png"></td>\
+                                        <!-- ko if:type === "middle-right" && !error -->\
+                                            <img src="./img/middle-right.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-left" -->\
-                                            <td><img src="./img/bottom-left.png"></td>\
+                                        <!-- ko if:type === "bottom-left" && !error -->\
+                                            <img src="./img/bottom-left.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-middle" -->\
-                                            <td><img src="./img/bottom-middle.png"></td>\
+                                        <!-- ko if:type === "bottom-middle" && !error -->\
+                                            <img src="./img/bottom-middle.png">\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-right" -->\
-                                            <td><img src="./img/bottom-right.png"></td>\
+                                        <!-- ko if:type === "bottom-right" && !error -->\
+                                            <img src="./img/bottom-right.png">\
                                         <!-- /ko -->\
+                                        <!-- ko if:error -->\
+                                            <img src="./img/ng.png">\
+                                        <!-- /ko -->\
+                                        </td>\
                                     <!-- /ko -->\
                                     <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
                                         <!-- ko if:$parents[1].currentColor() === "B" -->\
@@ -961,9 +985,16 @@ const html = '\
             </div>\
             <div class="modal-body">\
                 <p>\
-                    <strong>操作方法の補足</strong>\
+                    <strong>次の１手を当てるクイズモード</strong>\
                     <br>\
                     　「進む」ボタンの代わりに、盤上の適当な場所を押すことでも進めることができます。\
+                     この操作で、ただ単に進めるだけではつまらん、という方のために、次の１手を正解しないと先に進めないクイズモードというものを用意しています。\
+                    なお、「正解」といっても棋譜と同じかどうかというだけの話ですので、最善手とは限りません。\
+                    ちょっとした遊びと割り切っていただけたらと思います。\
+                </p>\
+                <p class="text-center">\
+                    <a href="#" data-bind="visible:quizeMode,click:function(){quizeMode(false)}">クイズモードをOFFにする</a>\
+                    <a href="#" data-bind="visible:!quizeMode(),click:function(){quizeMode(true)}">クイズモードをONにする</a>\
                 </p>\
                 <p>\
                     <strong>パーセントの意味</strong>\
