@@ -682,7 +682,7 @@ function View() {
         }
     };
 
-    self.quizeMode = ko.observable(false);
+    self.quizeMode = ko.observable(true);
 
     self.quize = function (x, y) {
         if (!self.quizeMode()) { return false; }
@@ -930,7 +930,7 @@ const html = '\
                                                 <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
-												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
@@ -939,7 +939,7 @@ const html = '\
                                                 <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
-												<span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
                                             </td>\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -985,18 +985,6 @@ const html = '\
             </div>\
             <div class="modal-body">\
                 <p>\
-                    <strong>次の１手を当てるクイズモード</strong>\
-                    <br>\
-                    　「進む」ボタンの代わりに、盤上の適当な場所を押すことでも進めることができます。\
-                     この操作で、ただ単に進めるだけではつまらん、という方のために、次の１手を正解しないと先に進めないクイズモードというものを用意しています。\
-                    なお、「正解」といっても棋譜と同じかどうかというだけの話ですので、最善手とは限りません。\
-                    ちょっとした遊びと割り切っていただけたらと思います。\
-                </p>\
-                <p class="text-center">\
-                    <a href="#" data-bind="visible:quizeMode,click:function(){quizeMode(false)}">クイズモードをOFFにする</a>\
-                    <a href="#" data-bind="visible:!quizeMode(),click:function(){quizeMode(true)}">クイズモードをONにする</a>\
-                </p>\
-                <p>\
                     <strong>パーセントの意味</strong>\
                     <br>\
                     　棋譜が枝分かれした時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
@@ -1007,7 +995,7 @@ const html = '\
                     <strong>黄色い数値の意味</strong>\
                     <br>\
                     　パーセントの右下に小さく表示されている黄色い数値は、用意されている棋譜の数です。\
-					例えばこの数字が1であるなら、その手の先にはもう分岐が無い、ということが分かります。\
+                    例えばこの数字が1であるなら、その手の先にはもう分岐が無い、ということが分かります。\
                 </p>\
                 <p>\
                     <strong>ダメ数の表示</strong>\
@@ -1015,6 +1003,18 @@ const html = '\
                     　下の方にある「ダメ数表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
                     攻め合いが複雑になってきた時、視覚的に分かりやすくなります。\
                     アタリの場合には赤字になります。\
+                </p>\
+                <p>\
+                    <strong>次の１手を当てるクイズ機能</strong>\
+                    <br>\
+                    　「進む」ボタンではなく、盤上を押すことでも手を進めることができます。\
+                    ただし、次の手を予想してその位置を押さなければ、進むことができません。\
+                    あくまでもコンピュータが打った手を予想するだけの話ですので、ちょっとした暇つぶしとして割り切って遊んでいただけたらと思います。\
+                    この機能が必要ない場合は、下を押して無効にすることができます。\
+                </p>\
+                <p class="text-center">\
+                    <a href="#" data-bind="visible:quizeMode,click:function(){quizeMode(false)}">クイズ機能を無効にする</a>\
+                    <a href="#" data-bind="visible:!quizeMode(),click:function(){quizeMode(true)}">クイズ機能を有効にする</a>\
                 </p>\
                 <p>\
                     <strong>現在の棋譜（SGF）</strong>\
