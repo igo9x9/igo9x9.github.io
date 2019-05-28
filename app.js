@@ -1,8 +1,9 @@
-const Kifu = function (handArray /* [{x:1, y:1}, {x:2, y:3}] */, resultString /* "B+2" */) {
+const Kifu = function (handArray /* [{x:1, y:1}, {x:2, y:3}] */, resultString /* "B+2" */, id) {
     this._hands = handArray;
     this._result = resultString;
     this._stoppedIndex = -1;
     this._currentIndex = -1;
+    this.ID = id;
 };
 
 Kifu.prototype.trySetNextHand = function (nextHand) {
@@ -517,6 +518,7 @@ Ban.prototype.readSGF = function () {
 
         let hands = [];
         let winner = "?";
+        let id = null;
 
         const parts = sgfTextList[m].toUpperCase().replace(/\n|\r\n/g, "").split(";");
 
@@ -528,6 +530,8 @@ Ban.prototype.readSGF = function () {
                 p.forEach(function (val, n) {
                     if (val === "RE") {
                         winner = p[n+1];
+                    } else if (val === "GN") {
+                        id = p[n+1];
                     } else if (val == "AB" || val == "AW") {
                         if (p[n+1] !== "TT") {
                             const x = p[n+1].charCodeAt(0) - 65;
@@ -545,7 +549,7 @@ Ban.prototype.readSGF = function () {
                 }
             }
         }
-        kifuList.push(new Kifu(hands, winner));
+        kifuList.push(new Kifu(hands, winner, id));
     }
 
     // varidate
@@ -563,7 +567,7 @@ Ban.prototype.readSGF = function () {
         for (let ii = 0; ii < stringHandList.length; ii++) {
             if (i === ii) { continue; }
             if (stringHandList[ii].indexOf(targetHands) > -1) {
-                alert("内部エラー：id=" + i + " は、id=" + ii + " と同一または id=" + ii + " に含まれます");
+                alert("内部エラー：id=" + kifuList[i].ID + " は、id=" + kifuList[ii].ID + " と同一または id=" + kifuList[ii].ID + " に含まれます");
                 return false;
             }
         }
@@ -775,7 +779,7 @@ function View() {
             }
         }
 
-        message += "<br><small class='text-secondary'>最終棋譜ID : " + ban.kifuAll.getFirstActiveKifuIndex() + "</small>";
+        message += "<br><small class='text-secondary'>最終棋譜ID : " + ban.kifuAll.getActiveKifuList()[0].ID + "</small>";
 
         return message;
     }
