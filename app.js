@@ -978,8 +978,8 @@ const html = '\
         <!-- /ko -->\
 \
 \
-<div class="modal" id="help" tabindex="-1">\
-    <div class="modal-dialog">\
+<div class="modal fade" id="help" tabindex="-1">\
+    <div class="modal-dialog modal-lg">\
         <div class="modal-content">\
             <div class="modal-header">\
                 <h5 class="modal-title" id="exampleModalLabel">操作説明</h5>\
@@ -1023,9 +1023,13 @@ const html = '\
                 </p>\
                 <p>\
                     <strong>棋譜をコピーする</strong>\
+                    <br>\
                     　下の方にある「SGF」を押すと、現在の盤上の状態をSFG形式の棋譜データとしてクリップボードにコピーできます。\
                 </p>\
             </div>\
+			<div class="modal-footer">\
+				<button type="button" class="btn btn-light" data-dismiss="modal">閉じる</button>\
+			</div>\
         </div>\
     </div>\
 </div>\
