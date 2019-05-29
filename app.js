@@ -972,7 +972,7 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:#007bff;position:absolute;top:-2px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                <span style="color:#007bff;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
                                                 data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
@@ -983,7 +983,7 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:#007bff;position:absolute;top:-2px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                <span style="color:#007bff;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
                                                 data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
