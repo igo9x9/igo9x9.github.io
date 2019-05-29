@@ -972,8 +972,8 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:#007bff;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
+                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-check"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
@@ -983,8 +983,8 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:#007bff;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
+                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-check"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -1007,8 +1007,8 @@ const html = '\
                 <div>\
                     <span data-bind="html:message"></span>\
                     <span data-bind="if: lastKifuID" style="margin-left:3px">\
-                        <a href="#" data-bind="visible: !isBookmarked(), click: addBookmark"><i class="far fa-star"></i></a>\
-                        <a href="#" data-bind="visible: isBookmarked, click: removeBookmark"><i class="fas fa-star"></i></a>\
+                        <a href="#" data-bind="visible: !isBookmarked(), click: addBookmark"><i class="far fa-check-circle"></i></a>\
+                        <a href="#" data-bind="visible: isBookmarked, click: removeBookmark"><i class="fas fa-check-circle"></i></a>\
                     </span>\
                 </div>\
             </div>\
@@ -1059,8 +1059,8 @@ const html = '\
                     <strong>ブックマーク機能</strong>\
                     <br>\
                     　それぞれの棋譜にブックマークを付けることができます。\
-                    ブックマークを付けておくと、棋譜が枝分かれした時に右上に小さく <i class="fas fa-star"></i> マークが付きます。\
-                    ブックマークを付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-star"></i> マークを押します。\
+                    ブックマークを付けておくと、棋譜が枝分かれした時に右上に <i class="fas fa-check"></i> マークが付きます。\
+                    ブックマークを付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-check-circle"></i> マークを押します。\
                 </p>\
                 <p>\
                     <strong>次の１手を当てるクイズ機能</strong>\
