@@ -982,24 +982,24 @@ const html = '\
     <div class="modal-dialog">\
         <div class="modal-content">\
             <div class="modal-header">\
-                <h5 class="modal-title" id="exampleModalLabel">ヘルプ</h5>\
+                <h5 class="modal-title" id="exampleModalLabel">操作説明</h5>\
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
                     <span aria-hidden="true">&times;</span>\
                 </button>\
             </div>\
             <div class="modal-body">\
                 <p>\
-                    <strong>パーセントの意味</strong>\
+                    <strong>パーセンテージの意味</strong>\
                     <br>\
-                    　棋譜が枝分かれした時に表示されているパーセントは、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
-                    ただし、「勝つ確率」といっても複雑な形勢判断をしているのではなく、単に登録している棋譜の勝敗数を集計しただけの数値です。\
-                    登録している棋譜が最善手を尽くしている訳ではありませんので（というより意図的に変な手も試しているので）、あまり気にせずにご覧ください。\
+                    　棋譜が枝分かれした時に表示されるパーセンテージの意味は、黒番であれば黒が勝つ確率、白番であれば白が勝つ確率を表します。\
+                    なお「勝つ確率」といっても、なにかAI的な高度な形勢判断をしているのではなく、ただ単に棋譜の勝敗数を集計しただけです。\
+                    全ての棋譜が最善手を指しているわけではありませんので（というより意図的に変な手も試しているので）、あまり気にしないでください。\
                 </p>\
                 <p>\
                     <strong>黄色い数値の意味</strong>\
                     <br>\
-                    　パーセントの右下に小さく表示されている黄色い数値は、用意されている棋譜の数です。\
-                    例えばこの数字が1であるなら、その手の先にはもう分岐が無い、ということが分かります。\
+                    　パーセンテージの右下に小さく表示されている黄色い数値は、その手から続いている棋譜の数を表します。\
+                    例えばこの数字が1であるなら、その手の先にはもう分岐が無いのだな、ということが分かります。\
                 </p>\
                 <p>\
                     <strong>ダメ数の表示</strong>\
@@ -1013,17 +1013,17 @@ const html = '\
                     <br>\
                     　「進む」ボタンではなく、盤上を押すことでも手を進めることができます。\
                     ただし、次の手を予想してその位置を押さなければ、進むことができません。\
-                    あくまでもコンピュータが打った手を予想するだけの話ですので、ちょっとした暇つぶしとして割り切って遊んでいただけたらと思います。\
-                    この機能が必要ない場合は、下を押して無効にすることができます。\
+                    次の手を予想するといってもコンピュータが打った手を予想するだけの話であり、それが最善手とは限りません。\
+                    ちょっとした暇つぶしとして、割り切って遊んでいただけたらと思います。\
+                    この機能が不要な場合は、下を押して無効にすることができます。\
                 </p>\
                 <p class="text-center">\
                     <a href="#" data-bind="visible:quizeMode,click:function(){quizeMode(false)}">クイズ機能を無効にする</a>\
-                    <a href="#" data-bind="visible:!quizeMode(),click:function(){quizeMode(true)}">クイズ機能を有効にする</a>\
+                    <a href="#" data-bind="visible:!quizeMode(),click:function(){quizeMode(true)}">やっぱり有効にしとく</a>\
                 </p>\
                 <p>\
-                    <strong>現在の棋譜（SGF）</strong>\
-                    <blockquote class="blockquote border rounded" data-bind="text:sgfString()" style="word-break:break-all;font-size: 0.8em; padding: 10px;">\
-                    </blockquote>\
+                    <strong>棋譜をコピーする</strong>\
+                    　下の方にある「SGF」を押すと、現在の盤上の状態をSFG形式の棋譜データとしてクリップボードにコピーできます。\
                 </p>\
             </div>\
         </div>\
