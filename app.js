@@ -112,6 +112,7 @@ KifuAll.prototype.getNextHands = function () {
         nextHand = pick(kifuHand);
         if (nextHand) {
             nextHand.winColors.push(kifu.winColor());
+            nextHand.kifuIDs.push(kifu.ID);
             return;
         }
         pickedHands.push({
@@ -119,6 +120,7 @@ KifuAll.prototype.getNextHands = function () {
             x: kifuHand.x,
             y: kifuHand.y,
             winColors: [kifu.winColor()],
+            kifuIDs: [kifu.ID],
             predication: function (color) {
                 let blackWillWin = 0;
                 this.winColors.forEach(function (item) {
@@ -129,11 +131,6 @@ KifuAll.prototype.getNextHands = function () {
                     }
                 });
                 const blackWinPer = Math.floor(blackWillWin / this.winColors.length * 100);
-                //if (blackWinPer === 1) { return "黒勝ち"; }
-                //if (blackWinPer === 0) { return "白勝ち"; }
-                //if (blackWinPer >= 0.6) { return "黒優勢"; }
-                //if (blackWinPer <= 0.4) { return "白優勢"; }
-                //return "互角";
                 if (color === "黒") {
                     return blackWinPer;
                 } else {
@@ -598,6 +595,39 @@ function View() {
 
     const history = ko.observableArray();
 
+    let saveData = ko.observable({bookmarks: []});
+    self.lastKifuID = ko.observable(null);
+
+    if (localStorage.getItem("kifuSaveData")) {
+        saveData(JSON.parse(localStorage.getItem("kifuSaveData")));
+    }
+
+    self.addBookmark = function () {
+        const newData = saveData();
+        newData.bookmarks.push(self.lastKifuID());
+        saveData(newData);
+        localStorage.setItem("kifuSaveData", JSON.stringify(saveData()));
+    };
+
+    self.isBookmarked = ko.computed(function () {
+        return saveData().bookmarks.includes(self.lastKifuID());
+    });
+
+    self.removeBookmark = function () {
+        const id = self.lastKifuID();
+        const newData = saveData().bookmarks.filter(function (n) {
+            return n !== id;
+        });
+        saveData({bookmarks: newData});
+        localStorage.setItem("kifuSaveData", JSON.stringify(saveData()));
+    };
+
+    self.isContainBookmark = function (ids) {
+        return saveData().bookmarks.some(function(id) {
+            return ids.includes(id);
+        });
+    };
+
     // init cells by null
     for (let y = 0; y < banSize; y++) {
         const cols = [];
@@ -665,8 +695,10 @@ function View() {
         return ban.getCurrentColor();
     };
 
+
     self.choise = function (hand) {
         self.message("");
+        self.lastKifuID(null);
         if (ban.putHand(hand.nextHand.x, hand.nextHand.y)) {
             refleshCells();
             const nextHands = ban.getCellsOnlyHasNextHand();
@@ -709,6 +741,7 @@ function View() {
             return true;
         }
         const nextHands = ban.getCellsOnlyHasNextHand();
+        self.lastKifuID(null);
         if (nextHands.length == 1) {
             self.choise(nextHands[0]);
             return true;
@@ -731,6 +764,7 @@ function View() {
 
     self.backward = function () {
         self.message("");
+        self.lastKifuID(null);
 
         if (ban.pages.length <= 2) {
             return;
@@ -779,7 +813,10 @@ function View() {
             }
         }
 
-        message += "<br><small class='text-secondary'>最終棋譜ID : " + ban.kifuAll.getActiveKifuList()[0].ID + "</small>";
+        const id = ban.kifuAll.getActiveKifuList()[0].ID;
+        message += "<br><small class='text-secondary'>最終棋譜ID : " + id + "</small>";
+
+        self.lastKifuID(id);
 
         return message;
     }
@@ -935,6 +972,8 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                <span style="color:#007bff;position:absolute;top:-2px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
@@ -944,6 +983,8 @@ const html = '\
                                                     <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
                                                 </div>\
                                                 <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                <span style="color:#007bff;position:absolute;top:-2px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs)"><i class="fas fa-star"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -963,7 +1004,13 @@ const html = '\
             </div>\
 \
             <div class="message-wrapper">\
-                <div data-bind="html:message"></div>\
+                <div>\
+                    <span data-bind="html:message"></span>\
+                    <span data-bind="if: lastKifuID" style="margin-left:3px">\
+                        <a href="#" data-bind="visible: !isBookmarked(), click: addBookmark"><i class="far fa-star"></i></a>\
+                        <a href="#" data-bind="visible: isBookmarked, click: removeBookmark"><i class="fas fa-star"></i></a>\
+                    </span>\
+                </div>\
             </div>\
 \
             <div style="font-size:0.8rem;padding:0 15px 10px 15px;">\
@@ -1007,6 +1054,13 @@ const html = '\
                     　下の方にある「ダメ数表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
                     攻め合いが複雑になってきた時、視覚的に分かりやすくなります。\
                     アタリの場合には赤字になります。\
+                </p>\
+                <p>\
+                    <strong>ブックマーク機能</strong>\
+                    <br>\
+                    　それぞれの棋譜にブックマークを付けることができます。\
+                    ブックマークを付けておくと、棋譜が枝分かれした時に右上に小さく <i class="fas fa-star"></i> マークが付きます。\
+                    ブックマークを付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-star"></i> マークを押します。\
                 </p>\
                 <p>\
                     <strong>次の１手を当てるクイズ機能</strong>\
