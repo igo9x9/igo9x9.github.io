@@ -998,7 +998,7 @@ const html = '\
                                                 <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
                                                 data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
                                                 <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-check-circle"></i></span>\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                         <!-- ko if:$parents[1].currentColor() === "W" -->\
@@ -1011,7 +1011,7 @@ const html = '\
                                                 <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
                                                 data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
                                                 <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-check-circle"></i></span>\
+                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
                                             </td>\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -1093,8 +1093,9 @@ const html = '\
                     <strong>棋譜に目印を付ける</strong>\
                     <br>\
                     　それぞれの棋譜に目印を付けておくことができます。\
-                    目印を付けると、棋譜が枝分かれした時に右上に <i class="fas fa-check-circle"></i> マークまたは <i class="fas fa-adjust"></i> マークが付きます。\
-                    目印を付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-check-circle"></i> マークを押します。\
+                    目印を付けると、棋譜が枝分かれした時に右上に <i class="fas fa-circle"></i> マークまたは <i class="fas fa-adjust"></i> マークが付きます。\
+                    <i class="fas fa-adjust"></i> マークは、その先に複数の棋譜があり、その一部だけに目印が付いていることを表します。\
+                    棋譜に目印を付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-check-circle"></i> マークを押します。\
                 </p>\
                 <p>\
                     <strong>次の１手を当てるクイズ機能</strong>\
