@@ -1042,7 +1042,7 @@ const html = '\
                     </span>\
                     <!-- /ko -->\
                     <!-- ko if: comment -->\
-                    <div class="text-left text-secondary border border-secondary rounded mt-1 p-1" data-bind="text: comment" style="font-size:0.9rem"></div>\
+                    <div class="text-left text-secondary border border-secondary rounded mt-1 p-1" data-bind="html: comment" style="font-size:0.8rem"></div>\
                     <!-- /ko -->\
                 </div>\
             </div>\
