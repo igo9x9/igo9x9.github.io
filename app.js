@@ -63,7 +63,12 @@ Kifu.prototype.result = function () {
 
 Kifu.prototype.isActive = function () {
     return this._stoppedIndex === -1 || (this._stoppedIndex === this._currentIndex - 1);
-}
+};
+
+Kifu.prototype.getComment = function () {
+    if (this._stoppedIndex !== -1) { return null; }
+    return this._hands[this._currentIndex].comment;
+};
 
 // -----------------
 
@@ -166,6 +171,14 @@ KifuAll.prototype.getFirstActiveKifuIndex = function () {
     return index;
 };
 
+KifuAll.prototype.getCurrentComment = function () {
+    for (let i = 0; i < this.kifuList.length; i++) {
+        const comment = this.kifuList[i].getComment();
+        if (comment) {
+            return comment;
+        }
+    }
+};
 
 // -----------------
 
@@ -184,6 +197,7 @@ const Cell = function (type) {
 const Page = function () {
     this.rows = [];
     this.nextHands = 0;
+    this.comment = null;
 }
 
 Page.prototype.init = function () {
@@ -237,6 +251,7 @@ Page.prototype.putHand = function (hand) {
     cell.isLastHand = true;
     this._removeDeadStones(hand.color);
     this._countDame();
+    this.comment = hand.comment;
 };
 
 Page.prototype.setNextHand = function (nextHand) {
@@ -459,9 +474,10 @@ Ban.prototype.putHand = function (x, y) {
     if (!this.kifuAll.trySetNextHand({x: x, y: y})) { return false; };
 
     const color = this.getCurrentColor();
+    const comment = this.kifuAll.getCurrentComment();
 
     const page = this.pages[this.pages.length - 1].copy();
-    page.putHand({x: x, y: y, color: color});
+    page.putHand({x: x, y: y, color: color, comment: comment});
 
     const nextHands = this.kifuAll.getNextHands();
 
@@ -517,7 +533,7 @@ Ban.prototype.readSGF = function () {
         let winner = "?";
         let id = null;
 
-        const parts = sgfTextList[m].toUpperCase().replace(/\n|\r\n/g, "").split(";");
+        const parts = sgfTextList[m].replace(/\n|\r\n/g, "").split(";");
 
         for (var i = 0; i < parts.length; i++) {
 
@@ -531,18 +547,26 @@ Ban.prototype.readSGF = function () {
                         id = p[n+1];
                     } else if (val == "AB" || val == "AW") {
                         if (p[n+1] !== "TT") {
-                            const x = p[n+1].charCodeAt(0) - 65;
-                            const y = p[n+1].charCodeAt(1) - 65;
+                            const x = p[n+1].toUpperCase().charCodeAt(0) - 65;
+                            const y = p[n+1].toUpperCase().charCodeAt(1) - 65;
                             hands.push({x: x, y: y});
                         }
                     }
                 });
+                continue;
+            }
 
-            } else if ((p[0] === "B" || p[0] === "W") && p[1] != "") {
-                if (p[1] !== "TT") {
-                    const x = p[1].charCodeAt(0) - 65;
-                    const y = p[1].charCodeAt(1) - 65;
-                    hands.push({x: x, y: y});
+            if (p[0] === "B" || p[0] === "W") {
+
+                if (p[1] === "TT") { break; }
+
+                const x = p[1].toUpperCase().charCodeAt(0) - 65;
+                const y = p[1].toUpperCase().charCodeAt(1) - 65;
+
+                if (p.length >= 4 && p[2] === "C") {
+                    hands.push({x: x, y: y, comment: p[3]});
+                } else {
+                    hands.push({x: x, y: y, comment: null});
                 }
             }
         }
@@ -660,6 +684,8 @@ function View() {
 
     self.nextColor = ko.observable();
 
+    self.comment = ko.observable();
+
     function refleshCells() {
         const page = ban.getCurrentPage();
         const cells = page.rows;
@@ -677,6 +703,8 @@ function View() {
         }
         const nextHands = ban.getCellsOnlyHasNextHand();
         self.nextHands(nextHands);
+
+        self.comment(page.comment);
 
         if (self.started() && nextHands.length !== 1) {
             self.canFoward(false);
@@ -1012,11 +1040,18 @@ const html = '\
 \
             <div class="message-wrapper">\
                 <div>\
+                    <!-- ko if: message -->\
                     <span data-bind="html:message"></span>\
-                    <span data-bind="if: lastKifuID" style="margin-left:3px">\
+                    <!-- /ko -->\
+                    <!-- ko if: lastKifuID -->\
+                    <span style="margin-left:3px">\
                         <a href="#" data-bind="visible: !isBookmarked(), click: addBookmark"><i class="far fa-check-circle"></i></a>\
                         <a href="#" data-bind="visible: isBookmarked, click: removeBookmark"><i class="fas fa-check-circle"></i></a>\
                     </span>\
+                    <!-- /ko -->\
+                    <!-- ko if: comment -->\
+                    <div class="text-left text-secondary border border-secondary rounded mt-1 p-1" data-bind="text: comment" style="font-size:0.9rem"></div>\
+                    <!-- /ko -->\
                 </div>\
             </div>\
 \
