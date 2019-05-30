@@ -62,7 +62,7 @@ Kifu.prototype.result = function () {
 };
 
 Kifu.prototype.isActive = function () {
-    return this._stoppedIndex === -1 || (this._stoppedIndex === this._currentIndex - 1);
+    return this._stoppedIndex === -1;
 };
 
 Kifu.prototype.getComment = function () {
@@ -157,18 +157,6 @@ KifuAll.prototype.getActiveKifuList = function () {
         }
     });
     return ret;
-};
-
-KifuAll.prototype.getFirstActiveKifuIndex = function () {
-    let index = -1;
-    this.kifuList.find(function (kifu, i) {
-        if (kifu.isActive()) {
-            index = i;
-            return true;
-        }
-        return false;
-    });
-    return index;
 };
 
 KifuAll.prototype.getCurrentComment = function () {
@@ -546,7 +534,7 @@ Ban.prototype.readSGF = function () {
                     } else if (val === "GN") {
                         id = p[n+1];
                     } else if (val == "AB" || val == "AW") {
-                        if (p[n+1] !== "TT") {
+                        if (p[n+1] !== "tt") {
                             const x = p[n+1].toUpperCase().charCodeAt(0) - 65;
                             const y = p[n+1].toUpperCase().charCodeAt(1) - 65;
                             hands.push({x: x, y: y});
@@ -558,7 +546,7 @@ Ban.prototype.readSGF = function () {
 
             if (p[0] === "B" || p[0] === "W") {
 
-                if (p[1] === "TT") { break; }
+                if (p[1] === "tt") { break; }
 
                 const x = p[1].toUpperCase().charCodeAt(0) - 65;
                 const y = p[1].toUpperCase().charCodeAt(1) - 65;
@@ -746,6 +734,10 @@ function View() {
 
             // push history
             history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
+
+            // debug
+            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
+            console.log(ban.kifuAll.getActiveKifuList()[0].ID, te);
         }
     };
 
