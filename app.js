@@ -614,6 +614,11 @@ function View() {
         saveData(JSON.parse(localStorage.getItem("kifuSaveData")));
     }
 
+    self.clearAllBookmark = function () {
+        saveData({bookmarks: []});
+        localStorage.setItem("kifuSaveData", JSON.stringify({bookmarks: []}));
+    };
+
     self.addBookmark = function () {
         const newData = saveData();
         newData.bookmarks.push(self.lastKifuID());
@@ -1096,6 +1101,11 @@ const html = '\
                     目印を付けると、棋譜が枝分かれした時に右上に <i class="fas fa-circle"></i> マークまたは <i class="fas fa-adjust"></i> マークが付きます。\
                     <i class="fas fa-adjust"></i> マークは、その先に複数の棋譜があり、その一部だけに目印が付いていることを表します。\
                     棋譜に目印を付けるには、棋譜の最終手までたどり着いた時に表示される <i class="far fa-check-circle"></i> マークを押します。\
+                    もう一度押すと解除します。\
+                    全ての目印を一括して解除したい場合は、下のボタンを押してください。\
+                </p>\
+                <p class="text-center">\
+                    <button class="btn btn-danger btn-sm" data-bind="click:clearAllBookmark">全ての目印を解除する</button>\
                 </p>\
                 <p>\
                     <strong>次の１手を当てるクイズ機能</strong>\
