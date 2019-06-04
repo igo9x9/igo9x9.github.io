@@ -617,6 +617,7 @@ function View() {
     self.clearAllBookmark = function () {
         saveData({bookmarks: []});
         localStorage.setItem("kifuSaveData", JSON.stringify({bookmarks: []}));
+        alert("全ての目印を消しました。");
     };
 
     self.addBookmark = function () {
@@ -678,6 +679,8 @@ function View() {
     self.nextColor = ko.observable();
 
     self.comment = ko.observable();
+
+	self.daihyoKifuID = ko.observable();
 
     function refleshCells() {
         const page = ban.getCurrentPage();
@@ -741,8 +744,9 @@ function View() {
             history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
 
             // debug
-            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
-            console.log(ban.kifuAll.getActiveKifuList()[0].ID, te);
+//            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
+//            console.log(ban.kifuAll.getActiveKifuList()[0].ID, te);
+            self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID);
         }
     };
 
@@ -1049,6 +1053,11 @@ const html = '\
                     <!-- ko if: comment -->\
                     <div class="text-left text-secondary border border-secondary rounded mt-1 p-1" data-bind="html: comment" style="font-size:0.8rem"></div>\
                     <!-- /ko -->\
+                    <!-- ko if: !lastKifuID() && daihyoKifuID() -->\
+                    <div style="margin-left:3px">\
+                        <small class="text-secondary">代表棋譜ID : <span data-bind="text:daihyoKifuID"></span></small>\
+                    </div>\
+                    <!-- /ko -->\
                 </div>\
             </div>\
 \
@@ -1105,7 +1114,7 @@ const html = '\
                     全ての目印を一括して解除したい場合は、下のボタンを押してください。\
                 </p>\
                 <p class="text-center">\
-                    <button class="btn btn-danger btn-sm" data-bind="click:clearAllBookmark">全ての目印を解除する</button>\
+                    <button class="btn btn-danger btn-sm" data-bind="click:clearAllBookmark">全ての目印を消す</button>\
                 </p>\
                 <p>\
                     <strong>次の１手を当てるクイズ機能</strong>\
