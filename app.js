@@ -1139,5 +1139,5 @@ ko.components.register("app", {
     template: html
 });
 
-ko.applyBindings();
+ko.applyBindings({fullScreen:ko.observable(false)});
 
