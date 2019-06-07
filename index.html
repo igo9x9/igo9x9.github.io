@@ -1,148 +1,136 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139602846-1"></script>
-	<script>
-	  window.dataLayer = window.dataLayer || [];
-	  function gtag(){dataLayer.push(arguments);}
-	  gtag('js', new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-139602846-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-	  gtag('config', 'UA-139602846-1');
-	</script>
-	<meta charset="UTF-8" />
+      gtag('config', 'UA-139602846-1');
+    </script>
+    <meta charset="UTF-8" />
     <title>９路盤「風車」の棋譜 | 囲碁クエストをより楽しむために</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
-	<meta name="description" content="囲碁クエスト９路盤での戦法名「風車」の棋譜をまとめているサイトです。" />
-	<link rel="icon" type="image/x-icon" href="./favicon.ico">
-	<link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-	<link rel="stylesheet" href="app.css">
-	<style>
-		body{
-		    min-height: 100vh;
-			position: relative;
-		    box-sizing: border-box;
-			background-color:#F1FAEE;
-		}
-		td>img {
-			display: block;
-			width: 100%;
-		}
-		footer {
-			color: #fff;
-		}
-		footer a:link, footer a:visited, footer a:hover, footer a:active {
-			color: #dcb35d;
-		}
-	</style>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+    <meta name="description" content="囲碁クエスト９路盤での戦法名「風車」の棋譜をまとめているサイトです。" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon-180x180.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="90s.css">
+    <style>
+        body{
+            min-height: 100vh;
+            position: relative;
+            box-sizing: border-box;
+            background-color:#F1FAEE;
+        }
+        td>img {
+            display: block;
+            width: 100%;
+        }
+    </style>
 </head>
 
-<body>
+<body data-bind="attr:{background:fullScreen() ? '' : './img2/background.gif'}">
 
-	<!-- ko if: !fullScreen() -->
-	<div class="jumbotron jumbotron-fluid" style="color:#fff;background-color: #1D3557;margin:0; ">
-		<div class="container">
-			<h1 class="display-4">囲碁９路盤「風車」の棋譜</h1>
-			<p class="lead">９路盤をゆるく楽しむ</p>
-		</div>
+    <!-- ko if: !fullScreen() -->
+    <div class="container text-center">
+
+        <h1 class="title">囲碁９路盤「風車」の棋譜</h1>
+        <div>９路盤をゆるく楽しむ</div>
+
+        あなたは
+        <div class="counter-wrapper">
+            <span class="counter">0</span>
+            <span class="counter">0</span>
+            <span class="counter">0</span>
+            <span class="counter">0</span>
+            <span class="counter">0</span>
+            <span class="counter">0</span>
+            <span class="counter">3</span>
+        </div>
+        番目のご訪問者です
+
+        <div class="marquee">
+            <p>
+                <span style="margin-right:50px">ようこそ！</span>
+                <span style="margin-right:50px">Last Update 2019/06/04</span>
+                棋譜をいくつか追加しました！
+            </p>
+        </div>
+
+        <div style="background-color:white;padding:10px;">
+            <img src="./img2/037.gif" width="150px" height="200px" align="right" style="margin:5px" class="d-none d-md-block">
+            <p class="text-left">
+                　対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で「風車」と名付けられている戦法の棋譜を、再生しやすいようにまとめています。
+                スマホ片手にダラダラとゴロ寝しながら眺めたかったので作りました。
+                コンピュータ同士を手動で対局させ、その棋譜も手作業で編集するという、効率の悪いアナログな方法でやっています。
+            </p>
+            <p class="text-left">
+                　棋譜の大半は、安斎伸彰先生の書籍「<a href="https://www.amazon.co.jp/%E6%B1%BA%E5%AE%9A%E7%89%88-%E5%9B%B2%E7%A2%81-9%E8%B7%AF%E7%9B%A4%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89-%E5%9B%B2%E7%A2%81%E4%BA%BA%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9-%E5%AE%89%E6%96%8E/dp/4839966923">決定版!囲碁9路盤完全ガイド</a>」（囲碁人ブックス）と、
+                三村智保先生のブログ「<a href="https://mimura15.jp/?page_id=737">三村囲碁JP - 9路の囲碁</a>」を参考にさせていただいており、
+                ある程度までその通りに手順を進めた後、続きは囲碁ソフトに打たせる、という他力本願ぶりです。
+                なお、囲碁ソフトが最善手を指すとは限らないため、例えば書籍やブログで黒優勢となっている場面から白が勝ったりする場合もありますのでご了承ください。
+            </p>
+            <br clear="all">
+        </div>
+    </div>
+    <!-- /ko -->
+
+    <div>
+        <div class="text-center" id="loading" style="height: 266px;">
+            <p class="text-primary" style="margin-top:200px"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
+        </div>
+
+        <app></app>
+
+        <div class="text-center">
+            <button class="hide-button" data-bind="visible:!fullScreen(), click:function() {fullScreen(true)}">碁盤以外を消す（推奨）</button>
+            <a href="#" data-bind="visible:fullScreen, click:function() {fullScreen(false)}">表示を戻す</a>
+        </div>
+    </div>
+
+    <!-- ko if: !fullScreen() -->
+
+	<div class="text-center">
+	    <img src="./img2/line.gif" style="margin:20px" class="d-none d-md-block">
+	    <br>
+	    <p>
+	        <img src="./img2/link.png">
+	    </p>
+	    <p>
+	        <string>使用した囲碁ソフト</string>
+	        <br>
+	        <a href="https://play.google.com/store/apps/details?id=jp.co.unbalance.android.gocsdllite&hl=ja">みんなの囲碁</a>
+	        <br>
+	        <a href="https://www.sjeng.org/leela.html">Leela</a>
+	    </p>
+	    <p>
+	        <string>参考にさせて頂いたサイト</string>
+	        <br>
+	        <a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a>
+	        <br>
+	        <a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a>
+	        <br>
+	        <a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a>
+	    </p>
+
+	    <img src="./img2/line.gif" style="margin:20px" class="d-none d-md-block">
+	    <br>
+
+	    <a href="mailto:ando19721226@gmail.com">
+	        <img src="./img2/mail.png" style="margin:20px"> 当サイトはリンクフリーです。
+	    </a>
+
 	</div>
-
-	<div class="container-fluid" style="background-color:#fff;padding:20px;">
-
-		<div class="container">
-
-			<img src="img2/smartphone_neru_man.png" align="right" style="margin:5px" class="d-none d-md-block">
-			<p>
-				　対局アプリの「<a href="http://wars.fm/go-ja.html">囲碁クエスト</a>」で「風車」と名付けられている戦法の棋譜を、再生しやすいようにまとめています。
-				スマホ片手にダラダラとゴロ寝しながら眺めたかったので作りました。
-	            コンピュータ同士を手動で対局させ、その棋譜も手作業で編集するという、効率の悪いアナログな方法でやっています。
-			</p>
-
-			<img src="img2/smartphone_neru_man.png" style="margin:5px auto 5px auto" class="d-block d-md-none">
-			<p>
-				　棋譜の大半は、安斎伸彰先生の書籍「<a href="https://www.amazon.co.jp/%E6%B1%BA%E5%AE%9A%E7%89%88-%E5%9B%B2%E7%A2%81-9%E8%B7%AF%E7%9B%A4%E5%AE%8C%E5%85%A8%E3%82%AC%E3%82%A4%E3%83%89-%E5%9B%B2%E7%A2%81%E4%BA%BA%E3%83%96%E3%83%83%E3%82%AF%E3%82%B9-%E5%AE%89%E6%96%8E/dp/4839966923">決定版!囲碁9路盤完全ガイド</a>」（囲碁人ブックス）と、
-				三村智保先生のブログ「<a href="https://mimura15.jp/?page_id=737">三村囲碁JP - 9路の囲碁</a>」を参考にさせていただいており、
-				ある程度までその通りに手順を進めた後、続きは囲碁ソフトに打たせる、という他力本願ぶりです。
-				なお、囲碁ソフトが最善手を指すとは限らないため、例えば書籍やブログで黒優勢となっている場面から白が勝ったりする場合もありますのでご了承ください。
-			</p>
-
-			<p>
-				　当初は「風車」以外の棋譜もまとめようと意気込んでいましたが、とても個人が片手間にできる量ではないことを思い知らされて諦めた、という経緯があります…。
-			</p>
-
-		</div>
-	</div>
-
-	<div class="container-fluid" style="color:#fff;background-color:#FF6B6B;padding:20px;">
-
-		<div class="container">
-
-			2019/06/04</span> 棋譜を追加しました。
-
-		</div>
-	</div>
-	<!-- /ko -->
-
-	<div class="container-fluid" style="padding:20px;">
-
-		<div class="container">
-
-			<div class="text-center" id="loading" style="height: 266px;">
-				<p class="text-primary" style="margin-top:200px"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
-			</div>
-
-			<app></app>
-
-			<div class="text-center">
-				<a href="#" data-bind="visible:!fullScreen(), click:function() {fullScreen(true)}">碁盤以外を隠す</a>
-				<a href="#" data-bind="visible:fullScreen, click:function() {fullScreen(false)}">表示を戻す</a>
-			</div>
-
-		</div>
-
-	</div>
-
-	<!-- ko if: !fullScreen() -->
-	<footer class="container-fluid border-top" style="background-color:#1D3557;padding:20px;font-size:0.8em">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 order-md-2">
-					<p>
-						使用した囲碁ソフト
-						<ul style="list-style:none">
-							<li>- <a href="https://play.google.com/store/apps/details?id=jp.co.unbalance.android.gocsdllite&hl=ja">みんなの囲碁</a></li>
-							<li>- <a href="https://www.sjeng.org/leela.html">Leela</a></li>
-						</ul>
-					</p>
-					<hr>
-					<p>
-						参考にさせて頂いたサイト
-						<ul style="list-style:none">
-							<li>- <a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a></li>
-							<li>- <a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a></li>
-							<li>- <a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a></li>
-						</ul>
-					</p>
-					<hr class="d-block d-md-none">
-				</div>
-				<div class="col-md-6 order-md-1">
-					<p>
-						私
-						<ul style="list-style:none">
-							<li><i class="fas fa-envelope fa-fw"></i> <a href="mailto:ando19721226@gmail.com">ando19721226@gmail.com</a></li>
-						</ul>
-					</p>
-				</div>
-			</div>
-		</div>
-	</footer>
-	<!-- /ko -->
+    <!-- /ko -->
 
 <div id="sgf" style="display:none">
 (;FF[1]GN[U4aPbwes]SZ[9]PB[]PW[]BS[17]WS[17]KM[7.0]HA[0]RU[Chinese]AP[]VW[]
@@ -4878,7 +4866,7 @@ DT[2019-06-07 08:47:02]RE[0]
 
 </div>
 
-	<script src="app.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
