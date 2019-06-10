@@ -30,6 +30,7 @@
             position: relative;
             box-sizing: border-box;
             background-color:#F1FAEE;
+			font-family: "游明朝", YuMincho, "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
         }
         td>img {
             display: block;
@@ -57,6 +58,10 @@
         </div>
         番目のご訪問者です
 
+        <p style="font-size:0.8rem;color:red"><img src="./img2/japanese.png"> Sorry, This site is Japanese only! </p>
+
+		<p style="font-size:0.8rem;color:blue"><blink data-bind="text:'今は ' + Date() + ' です'"></blink></p>
+
         <div class="marquee">
             <p>
                 <span style="margin-right:50px">ようこそ！</span>
@@ -79,11 +84,11 @@
             <br clear="all">
         </div>
 
-		<p style="margin:10px auto;color:red;">碁盤の操作にはJAVAスクリプトが必要です</p>
+        <p style="margin:10px auto;color:red;">碁盤の操作にはJAVAスクリプトが必要です</p>
     </div>
     <!-- /ko -->
 
-    <div>
+    <div style="font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,'Noto Sans',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';">
         <div class="text-center" id="loading" style="height: 266px;">
             <p class="text-primary" style="margin-top:200px"><i class="fa fa-cog fa-spin fa-3x fa-fw"></i></p>
         </div>
@@ -91,44 +96,44 @@
         <app></app>
 
         <div class="text-center">
-            <button class="hide-button" data-bind="visible:!fullScreen(), click:function() {fullScreen(true)}">碁盤以外を消す（推奨）</button>
+            <button class="hide-button" data-bind="visible:!fullScreen(), click:function() {fullScreen(true)}">碁盤だけを表示（推奨）</button>
             <a href="#" data-bind="visible:fullScreen, click:function() {fullScreen(false)}">表示を戻す</a>
         </div>
     </div>
 
     <!-- ko if: !fullScreen() -->
 
-	<div class="text-center">
-	    <img src="./img2/line.gif" style="margin:30px auto 10px auto" class="d-none d-md-block">
-	    <br>
-	    <p>
-	        <img src="./img2/link.png">
-	    </p>
-	    <p>
-	        <strong>使用した囲碁ソフト</strong>
-	        <br>
-	        <a href="https://play.google.com/store/apps/details?id=jp.co.unbalance.android.gocsdllite&hl=ja">みんなの囲碁</a>
-	        <br>
-	        <a href="https://www.sjeng.org/leela.html">Leela</a>
-	    </p>
-	    <p>
-	        <strong>参考にさせて頂いたサイト</strong>
-	        <br>
-	        <a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a>
-	        <br>
-	        <a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a>
-	        <br>
-	        <a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a>
-	    </p>
+    <div class="text-center">
+        <img src="./img2/line.gif" style="margin:30px auto 10px auto" class="d-none d-md-block">
+        <br>
+        <p>
+            <img src="./img2/link.png">
+        </p>
+        <p>
+            <strong>使用した囲碁ソフト</strong>
+            <br>
+            <a href="https://play.google.com/store/apps/details?id=jp.co.unbalance.android.gocsdllite&hl=ja">みんなの囲碁</a>
+            <br>
+            <a href="https://www.sjeng.org/leela.html">Leela</a>
+        </p>
+        <p>
+            <strong>参考にさせて頂いたサイト</strong>
+            <br>
+            <a href="https://mimura15.jp/?page_id=737">「三村囲碁JP」－ 9路の囲碁</a>
+            <br>
+            <a href="https://igoshougi.site/category/igo/jyouseki/">「囲碁棋譜添削」－ 定石</a>
+            <br>
+            <a href="https://nana-bluesky.com/744.html">「ちょっと気になる」－ 囲碁クエストの９路の戦法名はいくつある？</a>
+        </p>
 
-	    <img src="./img2/line.gif" style="margin:30px auto 10px auto" class="d-none d-md-block">
-	    <br>
+        <img src="./img2/line.gif" style="margin:30px auto 10px auto" class="d-none d-md-block">
+        <br>
 
-	    <a href="mailto:ando19721226@gmail.com">
-	        <img src="./img2/mail.png" style="margin:10px"> 当サイトはリンクフリーです。
-	    </a>
+        <a href="mailto:ando19721226@gmail.com">
+            <img src="./img2/mail.png" style="margin:10px"> 当サイトはリンクフリーです。
+        </a>
 
-	</div>
+    </div>
     <!-- /ko -->
 
 <div id="sgf" style="display:none">

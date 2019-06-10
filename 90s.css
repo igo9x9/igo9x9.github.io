@@ -35,23 +35,23 @@
     white-space:nowrap;
     -webkit-animation-name:marquee;
     -webkit-animation-timing-function:linear;
-    -webkit-animation-duration:20s;
+    -webkit-animation-duration:5s;
     -webkit-animation-iteration-count:infinite;
     -moz-animation-name:marquee;
     -moz-animation-timing-function:linear;
-    -moz-animation-duration:20s;
+    -moz-animation-duration:5s;
     -moz-animation-iteration-count:infinite;
     -ms-animation-name:marquee;
     -ms-animation-timing-function:linear;
-    -ms-animation-duration:20s;
+    -ms-animation-duration:5s;
     -ms-animation-iteration-count:infinite;
     -o-animation-name:marquee;
     -o-animation-timing-function:linear;
-    -o-animation-duration:20s;
+    -o-animation-duration:5s;
     -o-animation-iteration-count:infinite;
     animation-name:marquee;
     animation-timing-function:linear;
-    animation-duration:20s;
+    animation-duration:5s;
     animation-iteration-count:infinite;
 }
 @-webkit-keyframes marquee {
@@ -120,4 +120,32 @@ h1.title {
     2px -2px 1px #00F,
     -2px -2px 1px #00F;
     margin-bottom:30px;
+}
+
+
+blink {
+    -webkit-animation: 2s linear infinite condemned_blink_effect; // for android
+    animation: 2s linear infinite condemned_blink_effect;
+}
+@-webkit-keyframes condemned_blink_effect { // for android
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+@keyframes condemned_blink_effect {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
 }
