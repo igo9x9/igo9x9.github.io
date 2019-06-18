@@ -680,7 +680,7 @@ function View() {
 
     self.comment = ko.observable();
 
-	self.daihyoKifuID = ko.observable();
+    self.daihyoKifuID = ko.observable();
 
     function refleshCells() {
         const page = ban.getCurrentPage();
@@ -893,138 +893,126 @@ const html = '\
                         <!-- ko foreach: cells -->\
                         <tr>\
                             <!-- ko foreach: $data -->\
-                                <!-- ko if:stone === "B" -->\
-                                    <!-- ko if:!isLastHand -->\
-                                        <!-- ko if:$parents[1].showDame -->\
-                                            <td style="position: relative">\
+                                <td style="position: relative">\
+									<span class="x" data-bind="visible:$parentContext.$index() === 0, text:$index() + 1"></span>\
+									<span class="y" data-bind=\'visible:$index() === 0, text:(function(){a=["","一","二","三","四","五","六","七","八","九"];return a[$parentContext.$index()+1]})()\'></span>\
+                                    <!-- ko if:stone === "B" -->\
+                                        <!-- ko if:!isLastHand -->\
+                                            <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/b.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
                                                     <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
-                                            </td>\
-                                        <!-- /ko -->\
-                                        <!-- ko if:!$parents[1].showDame() -->\
-                                            <td>\
+                                            <!-- /ko -->\
+                                            <!-- ko if:!$parents[1].showDame() -->\
                                                 <img src="./img/b.png">\
-                                            </td>\
+                                            <!-- /ko -->\
                                         <!-- /ko -->\
-                                    <!-- /ko -->\
-                                    <!-- ko if:isLastHand -->\
-                                        <!-- ko if:$parents[1].showDame -->\
-                                            <td style="position: relative">\
+                                        <!-- ko if:isLastHand -->\
+                                            <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/b-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
                                                     <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
-                                            </td>\
-                                        <!-- /ko -->\
-                                        <!-- ko if:!$parents[1].showDame() -->\
-                                            <td>\
+                                            <!-- /ko -->\
+                                            <!-- ko if:!$parents[1].showDame() -->\
                                                 <img src="./img/b-last.png">\
-                                            </td>\
+                                            <!-- /ko -->\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
-                                <!-- /ko -->\
-                                <!-- ko if:stone === "W" -->\
-                                    <!-- ko if:!isLastHand -->\
-                                        <!-- ko if:$parents[1].showDame -->\
-                                            <td style="position: relative">\
+                                    <!-- ko if:stone === "W" -->\
+                                        <!-- ko if:!isLastHand -->\
+                                            <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/w.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
                                                     <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
-                                            </td>\
-                                        <!-- /ko -->\
-                                        <!-- ko if:!$parents[1].showDame() -->\
-                                            <td>\
+                                            <!-- /ko -->\
+                                            <!-- ko if:!$parents[1].showDame() -->\
                                                 <img src="./img/w.png">\
-                                            </td>\
+                                            <!-- /ko -->\
                                         <!-- /ko -->\
-                                    <!-- /ko -->\
-                                    <!-- ko if:isLastHand -->\
-                                        <!-- ko if:$parents[1].showDame -->\
-                                            <td style="position: relative">\
+                                        <!-- ko if:isLastHand -->\
+                                            <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/w-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
                                                     <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
-                                            </td>\
-                                        <!-- /ko -->\
-                                        <!-- ko if:!$parents[1].showDame() -->\
-                                            <td>\
+                                            <!-- /ko -->\
+                                            <!-- ko if:!$parents[1].showDame() -->\
                                                 <img src="./img/w-last.png">\
-                                            </td>\
+                                            <!-- /ko -->\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
-                                <!-- /ko -->\
-                                <!-- ko if:stone === null -->\
-                                    <!-- ko if:(nextHand === null) || ((nextHand !== null) && ($parents[1].nextHands().length <= 1))-->\
-                                        <td data-bind="click:$parents[1].quizeMode() && function() {$parents[1].quize($index(), $parentContext.$index())}, clickBubble: false">\
-                                        <!-- ko if:type === "top-left" && !error -->\
-                                            <img src="./img/top-left.png">\
+                                    <!-- ko if:stone === null -->\
+                                        <!-- ko if:(nextHand === null) || ((nextHand !== null) && ($parents[1].nextHands().length <= 1))-->\
+                                            <div data-bind="click:$parents[1].quizeMode() && function() {$parents[1].quize($index(), $parentContext.$index())}, clickBubble: false">\
+                                                <!-- ko if:type === "top-left" && !error -->\
+                                                    <img src="./img/top-left.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "top-middle" && !error -->\
+                                                    <img src="./img/top-middle.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "top-right" && !error -->\
+                                                    <img src="./img/top-right.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "middle-left" && !error -->\
+                                                    <img src="./img/middle-left.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "middle-middle" && !error -->\
+                                                    <img src="./img/middle-middle.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "middle-right" && !error -->\
+                                                    <img src="./img/middle-right.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "bottom-left" && !error -->\
+                                                    <img src="./img/bottom-left.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "bottom-middle" && !error -->\
+                                                    <img src="./img/bottom-middle.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:type === "bottom-right" && !error -->\
+                                                    <img src="./img/bottom-right.png">\
+                                                <!-- /ko -->\
+                                                <!-- ko if:error -->\
+                                                    <img src="./img/ng.png">\
+                                                <!-- /ko -->\
+                                            </div>\
                                         <!-- /ko -->\
-                                        <!-- ko if:type === "top-middle" && !error -->\
-                                            <img src="./img/top-middle.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "top-right" && !error -->\
-                                            <img src="./img/top-right.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "middle-left" && !error -->\
-                                            <img src="./img/middle-left.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "middle-middle" && !error -->\
-                                            <img src="./img/middle-middle.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "middle-right" && !error -->\
-                                            <img src="./img/middle-right.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-left" && !error -->\
-                                            <img src="./img/bottom-left.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-middle" && !error -->\
-                                            <img src="./img/bottom-middle.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:type === "bottom-right" && !error -->\
-                                            <img src="./img/bottom-right.png">\
-                                        <!-- /ko -->\
-                                        <!-- ko if:error -->\
-                                            <img src="./img/ng.png">\
-                                        <!-- /ko -->\
-                                        </td>\
-                                    <!-- /ko -->\
-                                    <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
-                                        <!-- ko if:$parents[1].currentColor() === "B" -->\
-                                            <td style="color:#000;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
-                                                <img src="./img/b-next.png">\
-                                                <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                        <!-- ko if:(nextHand !== null) && ($parents[1].nextHands().length > 1) -->\
+                                            <!-- ko if:$parents[1].currentColor() === "B" -->\
+                                                <div style="color:#000;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                                    <img src="./img/b-next.png">\
+                                                    <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                        <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                                    </div>\
+                                                    <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                    <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                    data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
+                                                    <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                    data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
                                                 </div>\
-                                                <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
-                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
-                                            </td>\
-                                        <!-- /ko -->\
-                                        <!-- ko if:$parents[1].currentColor() === "W" -->\
-                                            <td style="color:#fff;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
-                                                <img src="./img/w-next.png">\
-                                                <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                            <!-- /ko -->\
+                                            <!-- ko if:$parents[1].currentColor() === "W" -->\
+                                                <div style="color:#fff;position: relative;cursor:pointer;font-size:0.88rem;" data-bind="click:$parents[1].choise, clickBubble: false">\
+                                                    <img src="./img/w-next.png">\
+                                                    <div style="text-align:center;position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
+                                                        <span style="font-weight:500" data-bind="text:nextHand.predication($parents[1].nextColor()),style:{\'font-size\':nextHand.predication($parents[1].nextColor()) >= 100 ? \'0.75rem\' : \'0.88rem\'}"></span><span style="font-size:0.7rem">%</span>\
+                                                    </div>\
+                                                    <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
+                                                    <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                    data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
+                                                    <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
+                                                    data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
                                                 </div>\
-                                                <span style="color:yellow;position:absolute;bottom:-1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;" data-bind="text: nextHand.winColors.length"></span>\
-                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 1"><i class="fas fa-adjust"></i></span>\
-                                                <span style="color:yellow;position:absolute;top:1px;right:0;font-size:0.6rem;line-height:1em;background-color:#dcb35d;"\
-                                                data-bind="visible: $parents[1].isContainBookmark(nextHand.kifuIDs) === 2"><i class="fas fa-circle"></i></span>\
-                                            </td>\
+                                            <!-- /ko -->\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
-                                <!-- /ko -->\
+                                </td>\
                             <!-- /ko -->\
                         </tr>\
                         <!-- /ko -->\
@@ -1135,9 +1123,9 @@ const html = '\
                     　下の方にある「SGF」を押すと、現在の盤上の状態をSFG形式の棋譜データとしてクリップボードにコピーできます。\
                 </p>\
             </div>\
-			<div class="modal-footer">\
-				<button type="button" class="btn btn-light" data-dismiss="modal">閉じる</button>\
-			</div>\
+            <div class="modal-footer">\
+                <button type="button" class="btn btn-light" data-dismiss="modal">閉じる</button>\
+            </div>\
         </div>\
     </div>\
 </div>\

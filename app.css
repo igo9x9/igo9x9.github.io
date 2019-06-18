@@ -31,3 +31,17 @@
 	color: #212529;
     background-color: #f8f9fa;
 }
+.x {
+	font-size: 0.6rem;
+	position: absolute;
+	top: -5px;
+	left: 13px;
+	color: crimson;
+}
+.y {
+	font-size: 0.6rem;
+	position: absolute;
+	top: 7px;
+	left: -3px;
+	color: crimson;
+}
