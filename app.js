@@ -552,7 +552,13 @@ Ban.prototype.readSGF = function () {
                 const y = p[1].toUpperCase().charCodeAt(1) - 65;
 
                 if (p.length >= 4 && p[2] === "C") {
-                    hands.push({x: x, y: y, comment: p[3]});
+					const comment = p[3]
+						.replace("@完全ガイド", '<div style="font-size:0.6rem" class="text-right">－「決定版！囲碁９路盤完全ガイド」より</div>')
+						.replace("@三村JP", '<div style="font-size:0.6rem" class="text-right">－「三村囲碁JP」より</div>')
+						.replace("@研究",'<div style="font-size:0.6rem" class="text-right">－「9路の研究」さんツイートより</div>')
+						.replace("@HR", '<hr style="margin:5px 0 5px 0">')
+						.replace("@ソフト",'これ以降は囲碁ソフトによる参考棋譜です。')
+                    hands.push({x: x, y: y, comment: comment});
                 } else {
                     hands.push({x: x, y: y, comment: null});
                 }
