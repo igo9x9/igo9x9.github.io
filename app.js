@@ -750,9 +750,9 @@ function View() {
             history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
 
             // debug
-//            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
+            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
 //            console.log(ban.kifuAll.getActiveKifuList()[0].ID, te);
-            self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID);
+            self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID + " - " + te);
         }
     };
 
