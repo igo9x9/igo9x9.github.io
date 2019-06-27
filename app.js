@@ -467,6 +467,21 @@ Ban.prototype.putHand = function (x, y) {
     const page = this.pages[this.pages.length - 1].copy();
     page.putHand({x: x, y: y, color: color, comment: comment});
 
+    const prePage = this.pages[this.pages.length - 1];
+    for (let y = 0; y < 9; y++) {
+        for (let x = 0; x < 9; x++) {
+            if (!page.rows[y][x].stone) { continue; }
+            if (prePage.rows[y][x].dame < page.rows[y][x].dame) {
+                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-up' style='color:darkturquoise;font-size:0.7rem;position:absolute;top:-4px;'></i>";
+            } else if (prePage.rows[y][x].dame > page.rows[y][x].dame) {
+                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-down' style='color:deeppink;font-size:0.7rem;position:absolute;top:16px;'></i>";
+            } else {
+                page.rows[y][x].dameUpDown = "";
+            }
+        }
+    }
+
+
     const nextHands = this.kifuAll.getNextHands();
 
     nextHands.forEach(function (nextHand) {
@@ -552,12 +567,12 @@ Ban.prototype.readSGF = function () {
                 const y = p[1].toUpperCase().charCodeAt(1) - 65;
 
                 if (p.length >= 4 && p[2] === "C") {
-					const comment = p[3]
-						.replace("@完全ガイド", '<div style="font-size:0.6rem" class="text-right">－「決定版！囲碁９路盤完全ガイド」より</div>')
-						.replace("@三村JP", '<div style="font-size:0.6rem" class="text-right">－「三村囲碁JP」より</div>')
-						.replace("@研究",'<div style="font-size:0.6rem" class="text-right">－「9路の研究」さんツイートより</div>')
-						.replace("@HR", '<hr style="margin:5px 0 5px 0">')
-						.replace("@ソフト",'これ以降は囲碁ソフトによる参考棋譜です。')
+                    const comment = p[3]
+                        .replace("@完全ガイド", '<div style="font-size:0.6rem" class="text-right">－「決定版！囲碁９路盤完全ガイド」より</div>')
+                        .replace("@三村JP", '<div style="font-size:0.6rem" class="text-right">－「三村囲碁JP」より</div>')
+                        .replace("@研究",'<div style="font-size:0.6rem" class="text-right">－「9路の研究」さんツイートより</div>')
+                        .replace("@HR", '<hr style="margin:5px 0 5px 0">')
+                        .replace("@ソフト",'これ以降は囲碁ソフトによる参考棋譜です。')
                     hands.push({x: x, y: y, comment: comment});
                 } else {
                     hands.push({x: x, y: y, comment: null});
@@ -900,15 +915,17 @@ const html = '\
                         <tr>\
                             <!-- ko foreach: $data -->\
                                 <td style="position: relative">\
-									<span class="x" data-bind="visible:$parentContext.$index() === 0, text:$index() + 1"></span>\
-									<span class="y" data-bind=\'visible:$index() === 0, text:(function(){a=["","一","二","三","四","五","六","七","八","九"];return a[$parentContext.$index()+1]})()\'></span>\
+                                    <span class="x" data-bind="visible:$parentContext.$index() === 0, text:$index() + 1"></span>\
+                                    <span class="y" data-bind=\'visible:$index() === 0, text:(function(){a=["","一","二","三","四","五","六","七","八","九"];return a[$parentContext.$index()+1]})()\'></span>\
                                     <!-- ko if:stone === "B" -->\
                                         <!-- ko if:!isLastHand -->\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/b.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
-                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <span data-bind="html:dame,visible:dame !== 1" style="color:#fff"></span>\
+                                                    <span data-bind="html:dameUpDown,visible:dame !== 1"></span>\
+                                                    <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <b data-bind="html:dameUpDown,visible:dame === 1"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
@@ -919,8 +936,8 @@ const html = '\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/b-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#fff"></span>\
-                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <span data-bind="html:dame,visible:dame !== 1" style="color:#fff"></span>\
+                                                    <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
@@ -933,8 +950,10 @@ const html = '\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/w.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
-                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <span data-bind="html:dame,visible:dame !== 1" style="color:#000"></span>\
+                                                    <span data-bind="html:dameUpDown,visible:dame !== 1"></span>\
+                                                    <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <b data-bind="html:dameUpDown,visible:dame === 1"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
@@ -945,8 +964,8 @@ const html = '\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/w-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
-                                                    <span data-bind="text:dame,visible:dame !== 1" style="color:#000"></span>\
-                                                    <b data-bind="text:dame,visible:dame === 1" style="color:red"></b>\
+                                                    <span data-bind="html:dame,visible:dame !== 1" style="color:#000"></span>\
+                                                    <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
@@ -1095,6 +1114,7 @@ const html = '\
                     <br>\
                     　下の方にある「ダメ数表示」をONにすると、石のダメの数（呼吸点の数）を表示します。\
                     攻め合いが複雑になってきた時、視覚的に分かりやすくなります。\
+                    上矢印と下矢印は、ダメ数の増減の変化を表します。\
                     アタリの場合には赤字になります。\
                 </p>\
                 <p>\
