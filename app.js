@@ -823,6 +823,7 @@ function View() {
             return;
         }
         if (ban.popHand()) {
+            self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID);
             history.pop();
             refleshCells()
             const nextHands = ban.getCellsOnlyHasNextHand();
