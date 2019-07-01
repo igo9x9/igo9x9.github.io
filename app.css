@@ -45,3 +45,76 @@
 	left: -3px;
 	color: crimson;
 }
+
+.bounce-down {
+    animation: bounce-down 0.5s both;
+}
+@keyframes bounce-down {
+  0% {
+    transform: translateY(-15px);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: translateY(-10px);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: translateY(-6px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(-3px);
+    animation-timing-function: ease-in;
+  }
+  95% {
+    transform: translateY(-1px);
+    animation-timing-function: ease-in;
+  }
+  30%,
+  75%,
+  85%,
+  92% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+}
+.bounce-up {
+    animation: bounce-up 0.5s both;
+}
+@keyframes bounce-up {
+  0% {
+    transform: translateY(15px);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: translateY(10px);
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: translateY(6px);
+    animation-timing-function: ease-in;
+  }
+  90% {
+    transform: translateY(3px);
+    animation-timing-function: ease-in;
+  }
+  95% {
+    transform: translateY(1px);
+    animation-timing-function: ease-in;
+  }
+  30%,
+  75%,
+  85%,
+  92% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+  100% {
+    transform: translateY(0px);
+    animation-timing-function: ease-out;
+  }
+}

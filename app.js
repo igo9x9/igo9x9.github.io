@@ -472,9 +472,9 @@ Ban.prototype.putHand = function (x, y) {
         for (let x = 0; x < 9; x++) {
             if (!page.rows[y][x].stone) { continue; }
             if (prePage.rows[y][x].dame < page.rows[y][x].dame) {
-                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-up' style='color:darkturquoise;font-size:0.7rem;position:absolute;top:-4px;'></i>";
+                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-up bounce-up' style='color:darkturquoise;font-size:0.7rem;position:absolute;top:-4px;'></i>";
             } else if (prePage.rows[y][x].dame > page.rows[y][x].dame) {
-                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-down' style='color:deeppink;font-size:0.7rem;position:absolute;top:16px;'></i>";
+                page.rows[y][x].dameUpDown = "<i class='fas fa-caret-down bounce-down' style='color:deeppink;font-size:0.7rem;position:absolute;top:16px;'></i>";
             } else {
                 page.rows[y][x].dameUpDown = "";
             }
