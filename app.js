@@ -949,6 +949,7 @@ const html = '\
                                             <!-- /ko -->\
                                         <!-- /ko -->\
                                         <!-- ko if:isLastHand -->\
+                                            <div style="position:absolute;top:10px;left:10px;transform: translate(-50%,-50%);margin:0;padding:0;" class="red-ripple"></div>\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/b-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
@@ -977,6 +978,7 @@ const html = '\
                                             <!-- /ko -->\
                                         <!-- /ko -->\
                                         <!-- ko if:isLastHand -->\
+                                            <div style="position:absolute;top:10px;left:10px;transform: translate(-50%,-50%);margin:0;padding:0;" class="red-ripple"></div>\
                                             <!-- ko if:$parents[1].showDame -->\
                                                 <img src="./img/w-last.png">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\

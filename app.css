@@ -1,49 +1,49 @@
 .app-wrapper > img {
-	display: block;
-	width: 100%;
+    display: block;
+    width: 100%;
 }
 .app-wrapper {
-	max-width: 290px;
-	margin: 20px auto 20px auto;
-	padding: 0;
-	background-color: #f5f5f5;
-	border: 0.5px solid #ddd;
+    max-width: 290px;
+    margin: 20px auto 20px auto;
+    padding: 0;
+    background-color: #f5f5f5;
+    border: 0.5px solid #ddd;
 }
 .app-wrapper .buttons-wrapper {
-	margin-bottom: 5px;
-	padding: 10px 0px 5px 0px;
-	text-align: center;
+    margin-bottom: 5px;
+    padding: 10px 0px 5px 0px;
+    text-align: center;
 }
 .app-wrapper .bunki-wrapper {
-	margin-bottom: 5px;
-	padding: 5px 0px 10px 0px;
-	text-align: center;
+    margin-bottom: 5px;
+    padding: 5px 0px 10px 0px;
+    text-align: center;
 }
 .app-wrapper .message-wrapper {
-	margin: 0 10px 5px 10px;
-	text-align: center;
-	min-height: 1.5rem;
+    margin: 0 10px 5px 10px;
+    text-align: center;
+    min-height: 1.5rem;
 }
 .btn-outline-dark.white {
     background-color: white;
 }
 .btn-outline-dark.white:hover {
-	color: #212529;
+    color: #212529;
     background-color: #f8f9fa;
 }
 .x {
-	font-size: 0.6rem;
-	position: absolute;
-	top: -5px;
-	left: 13px;
-	color: crimson;
+    font-size: 0.6rem;
+    position: absolute;
+    top: -5px;
+    left: 13px;
+    color: crimson;
 }
 .y {
-	font-size: 0.6rem;
-	position: absolute;
-	top: 7px;
-	left: -3px;
-	color: crimson;
+    font-size: 0.6rem;
+    position: absolute;
+    top: 7px;
+    left: -3px;
+    color: crimson;
 }
 
 .bounce-down {
@@ -117,4 +117,24 @@
     transform: translateY(0px);
     animation-timing-function: ease-out;
   }
+}
+.red-ripple {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    pointer-events: none;
+    transform: scale(0);
+    opacity: 0;
+    background: #aa0000;
+    animation: red-ripple 0.3s ease-out;
+    z-index:1000;
+}
+@keyframes red-ripple {
+    from {
+        opacity: 1;
+    }
+    to {
+        transform: scale(5);
+        opacity: 0;
+    }
 }
