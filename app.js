@@ -625,6 +625,7 @@ function View() {
     self.cells = [];
 
     self.showDame = ko.observable(false);
+    let showDameBackup = null;
 
     const history = ko.observableArray();
 
@@ -808,11 +809,18 @@ function View() {
     };
 
     self.fastFoward = function () {
+        if (showDameBackup === null) {
+            showDameBackup = self.showDame();
+            self.showDame(false);
+        }
         if (self.foward()) {
             setTimeout(function () {
                 self.fastFoward();
             }, 10);
+            return;
         }
+        self.showDame(showDameBackup);
+        showDameBackup = null;
     };
 
     self.backward = function () {
@@ -837,11 +845,18 @@ function View() {
     };
 
     self.fastBackward = function () {
+        if (showDameBackup === null) {
+            showDameBackup = self.showDame();
+            self.showDame(false);
+        }
         if (self.backward()) {
             setTimeout(function () {
                 self.fastBackward();
             }, 0);
+            return;
         }
+        self.showDame(showDameBackup);
+        showDameBackup = null;
     };
 
     function getNextColor() {
