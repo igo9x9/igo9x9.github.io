@@ -950,14 +950,14 @@ const html = '\
                                         <!-- /ko -->\
                                         <!-- ko if:isLastHand -->\
                                             <!-- ko if:$parents[1].showDame -->\
-                                                <img src="./img/b-last.png">\
+                                                <img src="./img/b-last.png" class="puru-puru">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="html:dame,visible:dame !== 1" style="color:#fff"></span>\
                                                     <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
-                                                <img src="./img/b-last.png">\
+                                                <img src="./img/b-last.png" class="puru-puru">\
                                             <!-- /ko -->\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
@@ -978,14 +978,14 @@ const html = '\
                                         <!-- /ko -->\
                                         <!-- ko if:isLastHand -->\
                                             <!-- ko if:$parents[1].showDame -->\
-                                                <img src="./img/w-last.png">\
+                                                <img src="./img/w-last.png" class="puru-puru">\
                                                 <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%);margin:0;padding:0;">\
                                                     <span data-bind="html:dame,visible:dame !== 1" style="color:#000"></span>\
                                                     <b data-bind="html:dame,visible:dame === 1" style="color:red"></b>\
                                                 </div>\
                                             <!-- /ko -->\
                                             <!-- ko if:!$parents[1].showDame() -->\
-                                                <img src="./img/w-last.png">\
+                                                <img src="./img/w-last.png" class="puru-puru">\
                                             <!-- /ko -->\
                                         <!-- /ko -->\
                                     <!-- /ko -->\
