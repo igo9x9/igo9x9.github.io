@@ -882,6 +882,8 @@ function View() {
             }
         }
 
+        message = "<span class='text-danger'>" + message + "</span>";
+
         const id = ban.kifuAll.getActiveKifuList()[0].ID;
         message += "<br><small class='text-secondary'>最終棋譜ID : " + id + "</small>";
 

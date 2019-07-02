@@ -48,38 +48,17 @@
 
 .bounce-down {
     animation: bounce-down 0.5s both;
+    animation-timing-function: ease-out;
 }
 @keyframes bounce-down {
   0% {
+    text-shadow: 0 -10px 0 #000;
     transform: translateY(-15px);
-    animation-timing-function: ease-in;
-  }
-  60% {
-    transform: translateY(-10px);
-    animation-timing-function: ease-in;
-  }
-  80% {
-    transform: translateY(-6px);
-    animation-timing-function: ease-in;
-  }
-  90% {
-    transform: translateY(-3px);
-    animation-timing-function: ease-in;
-  }
-  95% {
-    transform: translateY(-1px);
-    animation-timing-function: ease-in;
-  }
-  30%,
-  75%,
-  85%,
-  92% {
-    transform: translateY(0px);
-    animation-timing-function: ease-out;
+	opacity: 0.5;
   }
   100% {
     transform: translateY(0px);
-    animation-timing-function: ease-out;
+	opacity: 1;
   }
 }
 .bounce-up {
@@ -116,31 +95,5 @@
   100% {
     transform: translateY(0px);
     animation-timing-function: ease-out;
-  }
-}
-
-.puru-puru {
-    animation: puru-puru 0.2s both;
-}
-@keyframes puru-puru {
-  0% {
-    transform: translateY(-10px);
-    animation-timing-function: ease-out;
-  }
-  10%,30%,50% {
-    transform: translateX(2px);
-  }
-  70%,90% {
-    transform: translateX(1px);
-  }
-  20%,40% {
-    transform: translateX(-2px);
-  }
-  60%,80% {
-    transform: translateX(-1px);
-  }
-  100% {
-    transform: translateY(0px);
-    transform: translateX(0px);
   }
 }
