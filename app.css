@@ -20,7 +20,7 @@
     text-align: center;
 }
 .app-wrapper .message-wrapper {
-    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, Verdana, Meiryo, "M+ 1p", sans-serif;
+    font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Verdana, Meiryo, "Yu Gothic", YuGothic, "M+ 1p", sans-serif;
     margin: 0 10px 5px 10px;
     text-align: center;
     min-height: 1.5rem;

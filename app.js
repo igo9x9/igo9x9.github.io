@@ -798,8 +798,6 @@ function View() {
 
 
     self.choise = function (hand) {
-        self.message("");
-        self.lastKifuID(null);
 
         // 打った手だけを先行して描画させる
         let nextHandCell = self.cells[hand.nextHand.y][hand.nextHand.x]();
@@ -810,6 +808,9 @@ function View() {
 
         setTimeout(function() {
             if (ban.putHand(hand.nextHand.x, hand.nextHand.y)) {
+
+		        self.message("");
+		        self.lastKifuID(null);
 
                 // 先行して描画した手を元に戻す
                 nextHandCell.stone = null;
