@@ -1,3 +1,55 @@
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, 'includes', {
+    value: function(searchElement, fromIndex) {
+
+      if (this == null) {
+        throw new TypeError('"this" is null or not defined');
+      }
+
+      // 1. Let O be ? ToObject(this value).
+      var o = Object(this);
+
+      // 2. Let len be ? ToLength(? Get(O, "length")).
+      var len = o.length >>> 0;
+
+      // 3. If len is 0, return false.
+      if (len === 0) {
+        return false;
+      }
+
+      // 4. Let n be ? ToInteger(fromIndex).
+      //    (If fromIndex is undefined, this step produces the value 0.)
+      var n = fromIndex | 0;
+
+      // 5. If n ≥ 0, then
+      //  a. Let k be n.
+      // 6. Else n < 0,
+      //  a. Let k be len + n.
+      //  b. If k < 0, let k be 0.
+      var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0);
+
+      function sameValueZero(x, y) {
+        return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y));
+      }
+
+      // 7. Repeat, while k < len
+      while (k < len) {
+        // a. Let elementK be the result of ? Get(O, ! ToString(k)).
+        // b. If SameValueZero(searchElement, elementK) is true, return true.
+        if (sameValueZero(o[k], searchElement)) {
+          return true;
+        }
+        // c. Increase k by 1. 
+        k++;
+      }
+
+      // 8. Return false
+      return false;
+    }
+  });
+}
+
 const Kifu = function (handArray /* [{x:1, y:1}, {x:2, y:3}] */, resultString /* "B+2" */, id) {
     this._hands = handArray;
     this._result = resultString;
@@ -748,28 +800,43 @@ function View() {
     self.choise = function (hand) {
         self.message("");
         self.lastKifuID(null);
-        if (ban.putHand(hand.nextHand.x, hand.nextHand.y)) {
-            refleshCells();
-            const nextHands = ban.getCellsOnlyHasNextHand();
-            if (nextHands.length > 1) {
-                self.message(getNextColor() + "番です。");
-            } else if (nextHands.length === 0) {
-                const result = ban.kifuAll.getActiveKifuList()[0].result();
-                self.message(parseResult(result));
-            } else {
-                if (ban.kifuAll.getActiveKifuList().length === 1) {
-                    self.message("この先分岐はありません。");
+
+        // 打った手だけを先行して描画させる
+        let nextHandCell = self.cells[hand.nextHand.y][hand.nextHand.x]();
+        nextHandCell.stone = ban.pages.length % 2 === 0 ? "W" : "B";
+        nextHandCell.isLastHand = true;
+        nextHandCell.dame = "";
+        self.cells[hand.nextHand.y][hand.nextHand.x](nextHandCell);
+
+        setTimeout(function() {
+            if (ban.putHand(hand.nextHand.x, hand.nextHand.y)) {
+
+                // 先行して描画した手を元に戻す
+                nextHandCell.stone = null;
+                nextHandCell.isLastHand = false;
+                nextHandCell.dame = 0;
+
+                refleshCells();
+                const nextHands = ban.getCellsOnlyHasNextHand();
+                if (nextHands.length > 1) {
+                    self.message(getNextColor() + "番です。");
+                } else if (nextHands.length === 0) {
+                    const result = ban.kifuAll.getActiveKifuList()[0].result();
+                    self.message(parseResult(result));
+                } else {
+                    if (ban.kifuAll.getActiveKifuList().length === 1) {
+                        self.message("この先分岐はありません。");
+                    }
                 }
+
+                // push history
+                history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
+
+                // debug
+                const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
+                self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID + " - " + te);
             }
-
-            // push history
-            history.push({x: hand.nextHand.x, y: hand.nextHand.y, c: ban.pages.length % 2 === 0 ? "B" : "W"});
-
-            // debug
-            const te = (ban.pages.length % 2 === 0 ? "B" : "W") + "[" + String.fromCharCode(97 + hand.nextHand.x) + String.fromCharCode(97 + hand.nextHand.y) + "]";
-//            console.log(ban.kifuAll.getActiveKifuList()[0].ID, te);
-            self.daihyoKifuID(ban.kifuAll.getActiveKifuList()[0].ID + " - " + te);
-        }
+        }, 0);
     };
 
     self.quizeMode = ko.observable(true);
